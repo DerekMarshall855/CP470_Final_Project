@@ -2,51 +2,46 @@ package com.example.cp470_final_project;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
+import android.content.Context;
+import android.media.AudioManager;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.ImageButton;
+import android.widget.SeekBar;
 
-public class MainActivity extends AppCompatActivity {
-    protected static final String ACTIVITY_NAME = "MainActivity";
-
+public class SettingsActivity extends AppCompatActivity {
+    private final static String ACTIVITY_NAME = "SettingsActivity";
+    private SeekBar volumeBar = null;
+    private AudioManager audioManager = null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        ImageButton help = (ImageButton)findViewById(R.id.Help);
-        Button play = (Button)findViewById(R.id.Play);
-        ImageButton settings = (ImageButton)findViewById(R.id.Settings);
-
-        settings.setOnClickListener(new View.OnClickListener() {
+        setContentView(R.layout.activity_settings);
+        CheckBox sfx = (CheckBox)findViewById(R.id.checkBox);
+        ImageButton previous = (ImageButton)findViewById(R.id.previous);
+        previous.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, SettingsActivity.class);
-                startActivity(intent);
+                finish();
             }
         });
 
-        help.setOnClickListener(new View.OnClickListener() {
+        sfx.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, HelpActivity.class);
-                startActivity(intent);
-
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked == true){
+                    //sfx is on
+                }
+                else{
+                    //sfx is off
+                }
             }
         });
-
-        play.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
-
-
-
     }
+
 
     protected void onStart() {
         super.onStart();
