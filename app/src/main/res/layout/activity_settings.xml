@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+    tools:context=".SettingsActivity">
+
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:gravity="center"
+        android:textSize="30dp"
+        android:text="SETTINGS" />
+
+    <TextView
+        android:id="@+id/music"
+        android:layout_width="250dp"
+        android:layout_height="50dp"
+        android:gravity="center"
+        android:text="Music"
+        android:layout_below="@+id/textView2"/>
+
+    <SeekBar
+        android:id="@+id/seekBar2"
+        android:layout_width="250dp"
+        android:layout_height="50dp"
+        android:layout_toRightOf="@+id/music"
+        android:layout_below="@id/textView2"/>
+
+    <TextView
+        android:id="@+id/sfx"
+        android:layout_width="250dp"
+        android:layout_height="50dp"
+        android:layout_below="@+id/music"
+        android:gravity="center"
+        android:text="SFX" />
+
+    <CheckBox
+        android:id="@+id/checkBox"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_below="@+id/seekBar2"
+        android:layout_toRightOf="@+id/sfx"
+        android:checked="true" />
+
+    <TextView
+        android:id="@+id/skins"
+        android:layout_width="250dp"
+        android:layout_height="50dp"
+        android:gravity="center"
+        android:layout_below="@id/sfx"
+        android:text="Skins" />
+
+    <ImageButton
+        android:id="@+id/previous"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/skins"
+        app:srcCompat="@drawable/ic_baseline_arrow_back_24" />
+
+
+</RelativeLayout>
