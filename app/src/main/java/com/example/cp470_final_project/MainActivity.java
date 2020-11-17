@@ -8,10 +8,11 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.media.MediaPlayer;
 
 public class MainActivity extends AppCompatActivity {
     protected static final String ACTIVITY_NAME = "MainActivity";
-
+    public static MediaPlayer bgm;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -19,6 +20,9 @@ public class MainActivity extends AppCompatActivity {
         ImageButton help = (ImageButton)findViewById(R.id.Help);
         Button play = (Button)findViewById(R.id.Play);
         ImageButton settings = (ImageButton)findViewById(R.id.Settings);
+        bgm = MediaPlayer.create(MainActivity.this,R.raw.bgm);
+        bgm.setLooping(true);
+        bgm.start();
 
         settings.setOnClickListener(new View.OnClickListener() {
             @Override
