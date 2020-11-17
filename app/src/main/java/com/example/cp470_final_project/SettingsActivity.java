@@ -4,7 +4,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.media.AudioManager;
+import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.util.Log;
 import android.view.View;
 import android.widget.CheckBox;
@@ -15,7 +17,6 @@ import android.widget.SeekBar;
 public class SettingsActivity extends AppCompatActivity {
     private final static String ACTIVITY_NAME = "SettingsActivity";
     private SeekBar volumeBar = null;
-    private AudioManager audioManager = null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,6 +29,9 @@ public class SettingsActivity extends AppCompatActivity {
                 finish();
             }
         });
+        volumeBar = (SeekBar)findViewById(R.id.seekBar2);
+
+
 
         sfx.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -40,6 +44,28 @@ public class SettingsActivity extends AppCompatActivity {
                 }
             }
         });
+
+        volumeBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                float volume = (float)(1 - (Math.log(100 - (progress)) / Math.log(100)));
+                MainActivity.bgm.setVolume(volume, volume);
+                MainActivity.bgm.start();
+
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+
+            }
+        });
+
     }
 
 
