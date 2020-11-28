@@ -54,26 +54,31 @@ public class MainActivity extends AppCompatActivity {
 
     protected void onStart() {
         super.onStart();
+        bgm.start();
         Log.i(ACTIVITY_NAME, "In onStart()");
     }
 
     protected void onResume() {
         super.onResume();
+        bgm.start();
         Log.i(ACTIVITY_NAME, "In onResume()");
     }
 
     protected void onPause() {
         super.onPause();
+        bgm.stop();
         Log.i(ACTIVITY_NAME, "In onPause()");
     }
 
     protected void onStop() {
         super.onStop();
+        bgm.stop();
         Log.i(ACTIVITY_NAME, "In onStop()");
     }
 
     protected void onDestroy() {
         super.onDestroy();
+        bgm.stop();
         Log.i(ACTIVITY_NAME, "In onDestroy()");
     }
 }

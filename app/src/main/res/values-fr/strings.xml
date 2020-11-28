@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Code du Capitaine</string>
+    <string name="exit">Sortie</string>
+    <string name="selectLevel">Choisir le niveau</string>
+    <string name="settings">Réglages</string>
+    <string name="play">Jouer</string>
+    <string name="title_activity_settings">Activité des paramètres</string>
+</resources>
