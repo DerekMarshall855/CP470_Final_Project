@@ -5,14 +5,22 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:background="@drawable/main_background">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimaryDark"
+        app:popupTheme="@style/AppTheme.PopupOverlay" />
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="fill_parent"
-        android:layout_height="145dp"
+        android:layout_height="148dp"
         android:gravity="center"
-        android:text="CAPTAIN CODE"
+        android:text="@string/app_name"
         android:textSize="75dp" />
 
     <LinearLayout
@@ -37,7 +45,6 @@
             android:gravity="center_horizontal|center"
             android:layout_margin="50dp"
             android:text="@string/play" />
-
 
         <ImageButton
             android:id="@+id/Settings"
