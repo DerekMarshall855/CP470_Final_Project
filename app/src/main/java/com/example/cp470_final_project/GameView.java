@@ -66,8 +66,8 @@ public class GameView extends SurfaceView implements Runnable {
 
     private void update() {
         //update game values
-        background1.x -= 10 * screenRatioX;
-        background2.x -= 10 * screenRatioX;
+        background1.x -= 5 * screenRatioX;
+        background2.x -= 5 * screenRatioX;
 
         if (background1.x + background1.background.getWidth() < 0) {
             background1.x = screenX;
