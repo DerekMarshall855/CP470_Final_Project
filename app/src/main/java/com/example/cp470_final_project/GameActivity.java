@@ -2,6 +2,7 @@ package com.example.cp470_final_project;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.pm.ActivityInfo;
 import android.graphics.Point;
 import android.os.Bundle;
 
@@ -19,6 +20,7 @@ public class GameActivity extends AppCompatActivity {
         gameView = new GameView(this, point.x, point.y);
 
         setContentView(gameView);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
     }
 
     @Override

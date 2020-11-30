@@ -9,4 +9,24 @@
         <item>reply</item>
         <item>reply_all</item>
     </string-array>
+
+    <string-array name="promptList">
+        <item>{"1":"Welcome! Let’s start by creating your character. Why don’t you give them a name?", "2":"Now let’s show that name off by printing it to the screen!", "3":"Before we go any further, we should double check that everything’s okay. What’s wrong with this line?"}</item>
+        <item>{"1":"", "2":"", "3":""}</item>
+    </string-array>
+
+    <string-array name="hintList">
+        <item>{"1":"Words are called strings and need to be surrounded by quotes (")", "2":"You can refer to something you've saved as a variable by typing its name", "3":"Lines must end with a certain special character"}</item>
+        <item>{"1":"", "2":"", "3":""}</item>
+    </string-array>
+
+    <string-array name="gameTextList">
+        <item>{"1":"String name = ", "2":"System.out.print(", "3":"Boolean proceed = true"}</item>
+        <item>{"1":"", "2":"", "3":""}</item>
+    </string-array>
+
+    <string-array name="gameAnsList">
+        <item>{"1":" ", "2":"name", "3":";"}</item>
+        <item>{"1":"", "2":"", "3":""}</item>
+    </string-array>
 </resources>

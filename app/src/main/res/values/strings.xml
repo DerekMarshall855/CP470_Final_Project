@@ -6,7 +6,12 @@
     <string name="title_activity_settings">SettingsActivity</string>
     <string name="app_name">CAPTAIN CODE</string>
     <string name="help_dialog_title">Caption Code Info</string>
-    <string name="ok">ok</string>
+    <string name="ok">OK</string>
     <string name="cancel">Cancel</string>
     <string name="Help">Help</string>
+    <string name="level">Level</string>
+    <string name="hint">Give me a hint</string>
+    <string name="submit">Check answers</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">blank text</string>
 </resources>
