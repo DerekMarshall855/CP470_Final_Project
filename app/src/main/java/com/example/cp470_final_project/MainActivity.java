@@ -65,13 +65,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public boolean onCreateOptionsMenu(Menu m){
-        getMenuInflater().inflate(R.menu.menu_main, m);
+        //getMenuInflater().inflate(R.menu.menu_main, m);
         return true;
     }
 
     public boolean onOptionsItemSelected(MenuItem item){
-        switch(item.getItemId()){
-            case R.id.help_action:
+        //switch(item.getItemId()){
+            //case R.id.help_action:
                 Log.d("Toolbar", "Help selected");
                 AlertDialog.Builder builder = new AlertDialog.Builder(this);
                 builder.setTitle(R.string.help_dialog_title);
@@ -89,9 +89,9 @@ public class MainActivity extends AppCompatActivity {
                 // Create the AlertDialog
                 AlertDialog dialog = builder.create();
                 dialog.show();
-                break;
+                //break;
 
-        }
+        //}
         return true;
     }
 
