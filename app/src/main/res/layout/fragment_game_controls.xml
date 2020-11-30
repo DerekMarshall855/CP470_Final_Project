@@ -95,8 +95,20 @@
         android:paddingRight="10dp"
         android:paddingLeft="10dp"
         android:layout_above = "@+id/levelCompletionBar"
-        android:layout_marginBottom = "25dp"
-        android:layout_centerHorizontal="true"/>
+        android:layout_alignStart = "@id/levelCompletionBar"
+        android:layout_marginBottom = "25dp" />
+    <Button
+        android:id="@+id/submitButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text = "@string/submit"
+        android:textAllCaps="false"
+        android:background = "@color/colorAccent"
+        android:paddingRight="10dp"
+        android:paddingLeft="10dp"
+        android:layout_above = "@+id/levelCompletionBar"
+        android:layout_alignEnd = "@id/levelCompletionBar"
+        android:layout_marginBottom = "25dp" />
 
     <ProgressBar
         android:id="@+id/levelCompletionBar"

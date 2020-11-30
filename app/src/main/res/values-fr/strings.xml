@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="exit">Sortie</string>
+    <string name="exit">Sortir</string>
     <string name="selectLevel">Choisir le niveau</string>
     <string name="settings">Configurations</string>
     <string name="play">Jouer</string>
@@ -12,5 +12,6 @@
     <string name="Help">Aide</string>
     <string name="level">Niveau</string>
     <string name="hint">Donne-moi un indice</string>
+    <string name="submit">Vérifier</string>
     <string name="hello_blank_fragment">blank text</string>
 </resources>

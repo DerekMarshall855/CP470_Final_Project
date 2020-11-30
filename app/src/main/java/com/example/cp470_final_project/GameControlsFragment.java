@@ -10,6 +10,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ProgressBar;
+import android.widget.Spinner;
+import android.widget.TextView;
 
 import com.google.android.material.snackbar.Snackbar;
 
@@ -28,7 +32,13 @@ public class GameControlsFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-    Button hintButton;
+    TextView levelName, gameText1, gameText2, gameText3;
+    EditText gameAns1, gameAns2;
+    Spinner gameAns3;
+    Button hintButton, submitButton;
+    ProgressBar completion;
+    String[] promptsList, gameTextsList, answersList, hintsList;
+    String prompts, gameTexts, answers, hints;
 
     public GameControlsFragment() {
         // Required empty public constructor
@@ -73,17 +83,50 @@ public class GameControlsFragment extends Fragment {
         //change level so it's passed from activity
         final int level = 1;
 
+        //Getting items
+        levelName = view.findViewById(R.id.levelTitle);
+        gameText1 = view.findViewById(R.id.gameText1);
+        gameText2 = view.findViewById(R.id.gameText2);
+        gameText3 = view.findViewById(R.id.gameText3);
+        gameAns1 = view.findViewById(R.id.enterText1);
+        gameAns2 = view.findViewById(R.id.enterText2);
+        gameAns3 = view.findViewById(R.id.dropSelect1);
         hintButton = view.findViewById(R.id.hintButton);
+        submitButton = view.findViewById(R.id.submitButton);
+        completion = view.findViewById(R.id.levelCompletionBar);
 
+        //Getting level values
+        promptsList = getResources().getStringArray(R.array.promptList);
+        gameTextsList = getResources().getStringArray(R.array.gameTextList);
+        answersList = getResources().getStringArray(R.array.gameAnsList);
+        hintsList = getResources().getStringArray(R.array.hintList);
+
+        prompts = promptsList[level-1];
+        gameTexts = gameTextsList[level-1];
+        answers = answersList[level-1];
+        hints = hintsList[level-1];
+
+        //Setting level values
+
+
+        //Listeners
         hintButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String[] hints = getResources().getStringArray(R.array.hintList);
-                String hintText = hints[level-1];
-                Snackbar.make(v.findViewById(R.id.hintButton), hintText, Snackbar.LENGTH_LONG).show();
+                Snackbar.make(v.findViewById(R.id.hintButton), hints, Snackbar.LENGTH_LONG).show();
+            }//end onClick
+        });//end listener
+
+        submitButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //if answers are right --> display congrats page/dialog/whatever, if not show toast to retry
+
             }//end onClick
 
         });//end listener
+
+
     }
 
 }
