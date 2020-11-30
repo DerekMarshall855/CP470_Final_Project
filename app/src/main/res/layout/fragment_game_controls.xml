@@ -85,6 +85,19 @@
         android:layout_alignBottom = "@id/gameText3"
         android:layout_toEndOf = "@id/gameText3"/>
 
+    <Button
+        android:id="@+id/hintButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text = "@string/hint"
+        android:textAllCaps="false"
+        android:background = "@color/colorAccent"
+        android:paddingRight="10dp"
+        android:paddingLeft="10dp"
+        android:layout_above = "@+id/levelCompletionBar"
+        android:layout_marginBottom = "25dp"
+        android:layout_centerHorizontal="true"/>
+
     <ProgressBar
         android:id="@+id/levelCompletionBar"
         style="?android:attr/progressBarStyleHorizontal"
@@ -99,5 +112,6 @@
         android:layout_marginBottom = "40dp"
         android:layout_alignParentBottom = "true"
         />
+
 
 </RelativeLayout>

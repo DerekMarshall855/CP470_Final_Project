@@ -2,11 +2,16 @@ package com.example.cp470_final_project;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+
+import com.google.android.material.snackbar.Snackbar;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -23,6 +28,7 @@ public class GameControlsFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    Button hintButton;
 
     public GameControlsFragment() {
         // Required empty public constructor
@@ -61,4 +67,23 @@ public class GameControlsFragment extends Fragment {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_game_controls, container, false);
     }
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        //change level so it's passed from activity
+        final int level = 1;
+
+        hintButton = view.findViewById(R.id.hintButton);
+
+        hintButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String[] hints = getResources().getStringArray(R.array.hintList);
+                String hintText = hints[level-1];
+                Snackbar.make(v.findViewById(R.id.hintButton), hintText, Snackbar.LENGTH_LONG).show();
+            }//end onClick
+
+        });//end listener
+    }
+
 }

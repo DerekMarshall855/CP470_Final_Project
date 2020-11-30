@@ -11,5 +11,6 @@
     <string name="cancel">Annuler</string>
     <string name="Help">Aide</string>
     <string name="level">Niveau</string>
+    <string name="hint">Donne-moi un indice</string>
     <string name="hello_blank_fragment">blank text</string>
 </resources>
