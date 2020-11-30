@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".GameControlsFragment">
+
+    <TextView
+        android:id = "@+id/levelTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Level 1"
+        android:textSize = "50sp"
+        android:layout_marginTop = "20dp"
+        android:layout_marginLeft = "25dp"/>
+
+    <TextView
+        android:id = "@+id/gameText1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/hello_blank_fragment"
+        android:textSize = "20sp"
+        android:layout_marginTop = "30dp"
+        android:layout_marginLeft = "25dp"
+        android:layout_below = "@id/levelTitle"
+        />
+    <EditText
+        android:id = "@+id/enterText1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/hello_blank_fragment"
+        android:textSize = "20sp"
+        android:layout_marginTop = "30dp"
+        android:layout_marginLeft = "10dp"
+        android:layout_below = "@id/levelTitle"
+        android:layout_alignBottom = "@id/gameText1"
+        android:layout_toEndOf = "@id/gameText1"/>
+
+    <TextView
+        android:id = "@+id/gameText2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/hello_blank_fragment"
+        android:textSize = "20sp"
+        android:layout_marginTop = "30dp"
+        android:layout_marginLeft = "25dp"
+        android:layout_below = "@id/gameText1"/>
+    <EditText
+        android:id = "@+id/enterText2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/hello_blank_fragment"
+        android:textSize = "20sp"
+        android:layout_marginTop = "30dp"
+        android:layout_marginLeft = "10dp"
+        android:layout_below = "@id/gameText1"
+        android:layout_alignBottom = "@id/gameText2"
+        android:layout_toEndOf = "@id/gameText2"/>
+    <TextView
+        android:id = "@+id/gameText3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/hello_blank_fragment"
+        android:textSize = "20sp"
+        android:layout_marginTop = "30dp"
+        android:layout_marginLeft = "25dp"
+        android:layout_below = "@id/gameText2"/>
+    <Spinner
+        android:id="@+id/dropSelect1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize = "20sp"
+        android:layout_marginTop = "30dp"
+        android:layout_marginLeft = "10dp"
+        android:layout_below = "@id/gameText2"
+        android:layout_alignBottom = "@id/gameText3"
+        android:layout_toEndOf = "@id/gameText3"/>
+
+</RelativeLayout>
