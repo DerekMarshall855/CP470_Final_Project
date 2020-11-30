@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="exit">Sortie</string>
+    <string name="selectLevel">Choisir le niveau</string>
+    <string name="settings">Reglages</string>
+    <string name="play">Jouer</string>
+    <string name="title_activity_settings">SettingsActivity</string>
+    <string name="app_name">CAPTAIN CODE</string>
+    <string name="help_dialog_title">Caption Code Info</string>
+    <string name="ok">ok</string>
+    <string name="cancel">cancel</string>
+    <string name="Help">help</string>
+</resources>
