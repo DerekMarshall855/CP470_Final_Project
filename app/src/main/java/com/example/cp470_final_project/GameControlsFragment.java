@@ -17,6 +17,10 @@ import android.widget.TextView;
 
 import com.google.android.material.snackbar.Snackbar;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link GameControlsFragment#newInstance} factory method to
@@ -106,7 +110,17 @@ public class GameControlsFragment extends Fragment {
         answers = answersList[level-1];
         hints = hintsList[level-1];
 
-        //Setting level values
+        //Setting text for level
+        JSONObject levelValues;
+        levelName.setText(R.string.level + level);
+        try {
+            levelValues = new JSONObject(gameTexts);
+            gameText1.setText(levelValues.getString("1"));
+            gameText2.setText(levelValues.getString("2"));
+            gameText3.setText(levelValues.getString("3"));
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
 
 
         //Listeners
