@@ -2,6 +2,7 @@ package com.example.cp470_final_project;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -14,6 +15,7 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.media.MediaPlayer;
 
+
 public class MainActivity extends AppCompatActivity {
     protected static final String ACTIVITY_NAME = "MainActivity";
     public static MediaPlayer bgm;
@@ -22,8 +24,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //Toolbar toolbar = findViewById(R.id.toolbar);
-        //setSupportActionBar(toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
 
 
 
@@ -64,13 +66,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public boolean onCreateOptionsMenu(Menu m){
-        //getMenuInflater().inflate(R.menu.menu_main, m);
+        getMenuInflater().inflate(R.menu.menu_main, m);
         return true;
     }
 
     public boolean onOptionsItemSelected(MenuItem item){
-        //switch(item.getItemId()){
-            //case R.id.help_action:
+        switch(item.getItemId()){
+            case R.id.help_action:
                 Log.d("Toolbar", "Help selected");
                 AlertDialog.Builder builder = new AlertDialog.Builder(this);
                 builder.setTitle(R.string.help_dialog_title);
@@ -90,7 +92,7 @@ public class MainActivity extends AppCompatActivity {
                 dialog.show();
                 //break;
 
-        //}
+        }
         return true;
     }
 
