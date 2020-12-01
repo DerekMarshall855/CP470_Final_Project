@@ -20,4 +20,7 @@
     <string name="level_3">Level Three</string>
     <string name="correct">That\'s right, good job!</string>
     <string name="wrong">That\'s not quite right, try again.</string>
+    <string name="dialogTitle">You beat the level!</string>
+    <string name="nextLevel">Next Level</string>
+    <string name="returnMain">Return to Menu</string>
 </resources>
