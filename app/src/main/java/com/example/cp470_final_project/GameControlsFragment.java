@@ -44,9 +44,9 @@ public class GameControlsFragment extends Fragment {
     Button hintButton, submitButton;
     ProgressBar completion;
     String[] promptsList, gameTextsList, answersList, hintsList;
-    String prompts, gameTexts, answers, hints, entry;
+    String prompts, gameTexts, answers, hints, entry, hint,prompt;
     JSONObject levelValues,promptValues,answerValues,hintValues;
-    ArrayList<String> aList, hList;
+    ArrayList<String> aList, hList,pList;
     Toast toast;
 
     public GameControlsFragment() {
@@ -122,6 +122,7 @@ public class GameControlsFragment extends Fragment {
         levelName.setText(R.string.level + level);
         aList = new ArrayList<String>();
         hList = new ArrayList<String>();
+        pList = new ArrayList<String>();
         try {
             levelValues = new JSONObject(gameTexts);
             gameText1.setText(levelValues.getString("1"));
@@ -129,6 +130,9 @@ public class GameControlsFragment extends Fragment {
             gameText3.setText(levelValues.getString("3"));
             promptValues = new JSONObject(prompts);
             promptText.setText(promptValues.getString("1"));
+            pList.add(promptValues.getString("1"));
+            pList.add(promptValues.getString("2"));
+            pList.add(promptValues.getString("3"));
             answerValues = new JSONObject(answers);
             aList.add(answerValues.getString("1"));
             aList.add(answerValues.getString("2"));
@@ -141,12 +145,14 @@ public class GameControlsFragment extends Fragment {
             e.printStackTrace();
         }
         entry = "";
+        hint = hList.get(0);
+        prompt = pList.get(0);
 
         //Listeners
         hintButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Snackbar.make(v.findViewById(R.id.hintButton), hints, Snackbar.LENGTH_LONG).show();
+                Snackbar.make(v.findViewById(R.id.hintButton), hint, Snackbar.LENGTH_LONG).show();
             }//end onClick
         });//end listener
 
@@ -157,10 +163,36 @@ public class GameControlsFragment extends Fragment {
                 toast = Toast.makeText(getActivity(), R.string.correct, Toast.LENGTH_LONG);
                 if(gameText2.getVisibility() != View.VISIBLE){
                     entry = gameAns1.getText().toString();
-                    if (entry == aList.get(0) || aList.get(0) == " "){
+                    if (entry.equals(aList.get(0)) || aList.get(0).equals(" ")){
+                        gameText2.setVisibility(View.VISIBLE);
+                        gameAns2.setVisibility(View.VISIBLE);
+                        hint = hList.get(1);
+                        prompt = pList.get(1);
+                        promptText.setText(prompt);
                         toast.show();
                     } else {
                         Log.i("Fragment", aList.get(0));
+                        toast = Toast.makeText(getActivity(), R.string.wrong, Toast.LENGTH_LONG);
+                        toast.show();
+                    }
+                } else if (gameText3.getVisibility() != View.VISIBLE){
+                    entry = gameAns2.getText().toString();
+                    if (entry.equals(aList.get(1)) || aList.get(1).equals(" ")){
+                        gameText3.setVisibility(View.VISIBLE);
+                        gameAns3.setVisibility(View.VISIBLE);
+                        hint = hList.get(2);
+                        prompt = pList.get(2);
+                        promptText.setText(prompt);
+                        toast.show();
+                    } else {
+                        toast = Toast.makeText(getActivity(), R.string.wrong, Toast.LENGTH_LONG);
+                        toast.show();
+                    }
+                } else {
+                    entry = gameAns3.getSelectedItem().toString();
+                    if (entry.equals(aList.get(2)) || aList.get(2).equals(" ")){
+                        toast.show();
+                    } else {
                         toast = Toast.makeText(getActivity(), R.string.wrong, Toast.LENGTH_LONG);
                         toast.show();
                     }
