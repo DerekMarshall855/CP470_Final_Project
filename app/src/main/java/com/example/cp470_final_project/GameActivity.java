@@ -9,13 +9,14 @@ import android.graphics.Point;
 import android.os.Bundle;
 import android.view.SurfaceView;
 import android.view.View;
+import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
 public class GameActivity extends AppCompatActivity {
 
-    private RelativeLayout game;
+    private FrameLayout game;
     private ImageButton controlButton;
     private GameControlsFragment controls;
     private Boolean menu;

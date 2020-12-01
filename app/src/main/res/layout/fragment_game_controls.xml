@@ -14,7 +14,7 @@
         android:layout_marginStart="25dp"
         android:layout_marginTop="20dp"
         android:text="@string/level"
-        android:textSize="50sp" />
+        android:textSize="40sp" />
 
     <TextView
         android:id="@+id/promptText"
@@ -101,6 +101,7 @@
         android:layout_above="@+id/levelCompletionBar"
         android:layout_alignStart="@id/levelCompletionBar"
         android:layout_marginBottom="25dp"
+        android:layout_below="@+id/dropSelect1"
         android:background="@color/colorAccent"
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
@@ -113,6 +114,7 @@
         android:layout_height="wrap_content"
         android:layout_above="@+id/levelCompletionBar"
         android:layout_alignEnd="@id/levelCompletionBar"
+        android:layout_below="@+id/dropSelect1"
         android:layout_marginBottom="25dp"
         android:background="@color/colorAccent"
         android:paddingLeft="10dp"
@@ -126,10 +128,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="25dp"
-        android:layout_marginEnd="25dp"
-        android:layout_marginBottom="40dp"
-        android:minHeight="30dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="10dp"
+        android:minHeight="15dp"
         android:progress="0"
         android:progressBackgroundTint="@color/colorAccent"
         android:progressTint="@color/colorPrimary" />

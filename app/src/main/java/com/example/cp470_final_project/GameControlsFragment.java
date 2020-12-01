@@ -131,6 +131,7 @@ public class GameControlsFragment extends Fragment {
         }
 
 
+
         //Listeners
         hintButton.setOnClickListener(new View.OnClickListener() {
             @Override
