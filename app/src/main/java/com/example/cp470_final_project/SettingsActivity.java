@@ -21,7 +21,7 @@ public class SettingsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
-        
+
         CheckBox sfx = (CheckBox)findViewById(R.id.checkBox);
         ImageButton previous = (ImageButton)findViewById(R.id.previous);
         previous.setOnClickListener(new View.OnClickListener() {
