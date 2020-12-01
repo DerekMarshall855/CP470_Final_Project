@@ -11,11 +11,13 @@
     <string name="Help">Help</string>
     <string name="level">Level</string>
     <string name="hint">Give me a hint</string>
-    <string name="submit">Check answers</string>
-    <string name="hello_blank_fragment">blank text</string>
+    <string name="submit">Check answer</string>
+    <string name="hello_blank_fragment">answer</string>
     <string name="controls">Controls</string>
     <string name="level_select">Level Select</string>
     <string name="level_1">Level One</string>
     <string name="level_2">Level Two</string>
     <string name="level_3">Level Three</string>
+    <string name="correct">That\'s right, good job!</string>
+    <string name="wrong">That\'s not quite right, try again.</string>
 </resources>
