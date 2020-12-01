@@ -14,4 +14,9 @@
     <string name="submit">Check answers</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">blank text</string>
+    <string name="controls">Controls</string>
+    <string name="level_select">Level Select</string>
+    <string name="level_1">Level One</string>
+    <string name="level_2">Level Two</string>
+    <string name="level_3">Level Three</string>
 </resources>

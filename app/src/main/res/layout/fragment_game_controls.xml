@@ -1,129 +1,130 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/fragment_control"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="horizontal"
     tools:context=".GameControlsFragment">
 
     <TextView
-        android:id = "@+id/levelTitle"
+        android:id="@+id/levelTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="20dp"
         android:text="@string/level"
-        android:textSize = "50sp"
-        android:layout_marginTop = "20dp"
-        android:layout_marginStart = "25dp"/>
+        android:textSize="50sp" />
 
     <TextView
-        android:id = "@+id/gameText1"
+        android:id="@+id/gameText1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@id/levelTitle"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="30dp"
         android:text="@string/hello_blank_fragment"
-        android:textSize = "20sp"
-        android:layout_marginTop = "30dp"
-        android:layout_marginStart = "25dp"
-        android:layout_below = "@id/levelTitle"
-        />
+        android:textSize="20sp" />
 
     <EditText
-        android:id = "@+id/enterText1"
+        android:id="@+id/enterText1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/gameText1"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="25dp"
+        android:layout_toEndOf="@id/gameText1"
+        android:autofillHints="@string/hello_blank_fragment"
         android:hint="@string/hello_blank_fragment"
-        android:autofillHints="@string/hello_blank_fragment"
-        android:inputType = "text"
-        android:textSize = "20sp"
-        android:layout_marginTop = "30dp"
-        android:layout_marginStart = "10dp"
-        android:layout_marginEnd = "25dp"
-        android:layout_alignBottom = "@id/gameText1"
-        android:layout_toEndOf = "@id/gameText1"/>
+        android:inputType="text"
+        android:textSize="20sp" />
 
     <TextView
-        android:id = "@+id/gameText2"
+        android:id="@+id/gameText2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@id/gameText1"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="30dp"
         android:text="@string/hello_blank_fragment"
-        android:textSize = "20sp"
-        android:layout_marginTop = "30dp"
-        android:layout_marginStart = "25dp"
-        android:layout_below = "@id/gameText1"/>
+        android:textSize="20sp" />
 
     <EditText
-        android:id = "@+id/enterText2"
+        android:id="@+id/enterText2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:hint = "@string/hello_blank_fragment"
+        android:layout_alignBottom="@id/gameText2"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="25dp"
+        android:layout_toEndOf="@id/gameText2"
         android:autofillHints="@string/hello_blank_fragment"
-        android:inputType = "text"
-        android:textSize = "20sp"
-        android:layout_marginTop = "30dp"
-        android:layout_marginStart = "10dp"
-        android:layout_marginEnd = "25dp"
-        android:layout_alignBottom = "@id/gameText2"
-        android:layout_toEndOf = "@id/gameText2"/>
+        android:hint="@string/hello_blank_fragment"
+        android:inputType="text"
+        android:textSize="20sp" />
 
     <TextView
-        android:id = "@+id/gameText3"
+        android:id="@+id/gameText3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@id/gameText2"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="30dp"
         android:text="@string/hello_blank_fragment"
-        android:textSize = "20sp"
-        android:layout_marginTop = "30dp"
-        android:layout_marginStart = "25dp"
-        android:layout_below = "@id/gameText2"/>
+        android:textSize="20sp" />
 
     <Spinner
         android:id="@+id/dropSelect1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize = "20sp"
-        android:layout_marginTop = "30dp"
-        android:layout_marginStart = "10dp"
-        android:layout_marginEnd = "25dp"
-        android:layout_below = "@id/gameText2"
-        android:layout_alignBottom = "@id/gameText3"
-        android:layout_toEndOf = "@id/gameText3"/>
+        android:layout_below="@id/gameText2"
+        android:layout_alignBottom="@id/gameText3"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="25dp"
+        android:layout_toEndOf="@id/gameText3"
+        android:textSize="20sp" />
 
     <Button
         android:id="@+id/hintButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text = "@string/hint"
-        android:textAllCaps="false"
-        android:background = "@color/colorAccent"
-        android:paddingRight="10dp"
+        android:layout_above="@+id/levelCompletionBar"
+        android:layout_alignStart="@id/levelCompletionBar"
+        android:layout_marginBottom="25dp"
+        android:background="@color/colorAccent"
         android:paddingLeft="10dp"
-        android:layout_above = "@+id/levelCompletionBar"
-        android:layout_alignStart = "@id/levelCompletionBar"
-        android:layout_marginBottom = "25dp" />
+        android:paddingRight="10dp"
+        android:text="@string/hint"
+        android:textAllCaps="false" />
+
     <Button
         android:id="@+id/submitButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text = "@string/submit"
-        android:textAllCaps="false"
-        android:background = "@color/colorAccent"
-        android:paddingRight="10dp"
+        android:layout_above="@+id/levelCompletionBar"
+        android:layout_alignEnd="@id/levelCompletionBar"
+        android:layout_marginBottom="25dp"
+        android:background="@color/colorAccent"
         android:paddingLeft="10dp"
-        android:layout_above = "@+id/levelCompletionBar"
-        android:layout_alignEnd = "@id/levelCompletionBar"
-        android:layout_marginBottom = "25dp" />
+        android:paddingRight="10dp"
+        android:text="@string/submit"
+        android:textAllCaps="false" />
 
     <ProgressBar
         android:id="@+id/levelCompletionBar"
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="25dp"
+        android:layout_marginEnd="25dp"
+        android:layout_marginBottom="40dp"
         android:minHeight="30dp"
         android:progress="0"
         android:progressBackgroundTint="@color/colorAccent"
-        android:progressTint="@color/colorPrimary"
-        android:layout_marginStart = "25dp"
-        android:layout_marginEnd = "25dp"
-        android:layout_marginBottom = "40dp"
-        android:layout_alignParentBottom = "true"
-        />
+        android:progressTint="@color/colorPrimary" />
 
 
 </RelativeLayout>

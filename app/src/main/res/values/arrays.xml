@@ -16,7 +16,7 @@
     </string-array>
 
     <string-array name="hintList">
-        <item>{"1":"Words are called strings and need to be surrounded by quotes (")", "2":"You can refer to something you've saved as a variable by typing its name", "3":"Lines must end with a certain special character"}</item>
+        <item>{"1":"Words are called strings and need to be surrounded by quotes (\")", "2":"You can refer to something you\'ve saved as a variable by typing its name", "3":"Lines must end with a certain special character"}</item>
         <item>{"1":"", "2":"", "3":""}</item>
     </string-array>
 

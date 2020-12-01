@@ -4,14 +4,19 @@
     <string name="selectLevel">Choisir le niveau</string>
     <string name="settings">Configurations</string>
     <string name="play">Jouer</string>
-    <string name="title_activity_settings">SettingsActivity</string>
-    <string name="app_name">CAPTAIN CODE</string>
-    <string name="help_dialog_title">Caption Code Info</string>
-    <string name="ok">OK</string>
+    <string name="title_activity_settings">Activité des Paramètres</string>
+    <string name="app_name">CODE DU CAPITAINE</string>
+    <string name="help_dialog_title">Informations sur le code du capitaine</string>
+    <string name="ok">d\'accord</string>
     <string name="cancel">Annuler</string>
     <string name="Help">Aide</string>
     <string name="level">Niveau</string>
     <string name="hint">Donne-moi un indice</string>
     <string name="submit">Vérifier</string>
-    <string name="hello_blank_fragment">blank text</string>
+    <string name="hello_blank_fragment">texte vierge</string>
+    <string name="controls">les contrôles</string>
+    <string name="level_select">Sélection de Niveau</string>
+    <string name="level_1">Niveau Un</string>
+    <string name="level_2">Niveau Deux</string>
+    <string name="level_3">Niveau Trois</string>
 </resources>
