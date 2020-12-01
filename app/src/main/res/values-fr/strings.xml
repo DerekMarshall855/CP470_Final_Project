@@ -13,5 +13,6 @@
     <string name="level">Niveau</string>
     <string name="hint">Donne-moi un indice</string>
     <string name="submit">Vérifier</string>
-    <string name="hello_blank_fragment">blank text</string>
+    <string name="hello_blank_fragment">texte vierge</string>
+    <string name="controls">les contrôles</string>
 </resources>

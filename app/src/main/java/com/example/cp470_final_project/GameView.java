@@ -3,9 +3,14 @@ package com.example.cp470_final_project;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Paint;
+import android.util.Log;
+import android.view.MotionEvent;
+import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 
-public class GameView extends SurfaceView implements Runnable {
+import androidx.annotation.NonNull;
+
+public class GameView extends SurfaceView implements Runnable, SurfaceHolder.Callback {
 
     private Thread thread;
     private Boolean isPlaying;
@@ -13,9 +18,16 @@ public class GameView extends SurfaceView implements Runnable {
     private float screenRatioX, screenRatioY;
     private Paint paint;
     private int screenX, screenY;
+    public boolean select;
+    private SurfaceHolder mSurfaceHolder;
 
     public GameView(Context ctx, int screenX, int screenY) {
         super(ctx);
+
+        this.select = false;
+
+        mSurfaceHolder = getHolder();
+        mSurfaceHolder.addCallback(this);
 
         this.screenX = screenX;
         this.screenY = screenY;
@@ -68,6 +80,7 @@ public class GameView extends SurfaceView implements Runnable {
         //update game values
         background1.x -= 5 * screenRatioX;
         background2.x -= 5 * screenRatioX;
+        Log.i("GameView", "Update Method");
 
         if (background1.x + background1.background.getWidth() < 0) {
             background1.x = screenX;
@@ -85,10 +98,29 @@ public class GameView extends SurfaceView implements Runnable {
 
     public void pause(){
         isPlaying = false;
-        try {
-            thread.join();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
+        Boolean retry = true;
+        while(retry) {
+            try {
+                thread.join();
+                retry = false;
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         }
+    }
+
+    @Override
+    public void surfaceCreated(@NonNull SurfaceHolder holder) {
+        this.resume();
+    }
+
+    @Override
+    public void surfaceChanged(@NonNull SurfaceHolder holder, int format, int width, int height) {
+        //idk
+    }
+
+    @Override
+    public void surfaceDestroyed(@NonNull SurfaceHolder holder) {
+        this.pause();
     }
 }

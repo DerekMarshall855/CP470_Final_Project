@@ -14,4 +14,5 @@
     <string name="submit">Check answers</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">blank text</string>
+    <string name="controls">Controls</string>
 </resources>
