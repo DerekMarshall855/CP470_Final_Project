@@ -16,7 +16,6 @@ import android.widget.RelativeLayout;
 public class GameActivity extends AppCompatActivity {
 
     private RelativeLayout game;
-    private ImageButton controlButton;
     private GameControlsFragment controls;
     private Boolean menu;
 
@@ -25,7 +24,6 @@ public class GameActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_test);
-        getWindow().getDecorView().setBackgroundColor(Color.WHITE);
 
         menu = false;
         Point point = new Point();

@@ -111,13 +111,11 @@ public class MainActivity extends AppCompatActivity {
 
     protected void onPause() {
         super.onPause();
-        bgm.stop();
         Log.i(ACTIVITY_NAME, "In onPause()");
     }
 
     protected void onStop() {
         super.onStop();
-        bgm.stop();
         Log.i(ACTIVITY_NAME, "In onStop()");
     }
 
@@ -125,6 +123,5 @@ public class MainActivity extends AppCompatActivity {
         super.onDestroy();
         bgm.stop();
         Log.i(ACTIVITY_NAME, "In onDestroy()");
-        bgm.stop();
     }
 }

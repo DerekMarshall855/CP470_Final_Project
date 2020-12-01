@@ -5,22 +5,15 @@
     android:id="@+id/layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".GameActivity">
+    tools:context=".GameActivity"
+    android:baselineAligned="false">
 
     <RelativeLayout
         android:id="@+id/game"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="1">
 
     </RelativeLayout>
-
-    <ImageButton
-        android:id="@+id/image_button"
-        android:layout_width="100dp"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:contentDescription="TODO"
-        app:srcCompat="@drawable/treasure_map" />
 
 </LinearLayout>
