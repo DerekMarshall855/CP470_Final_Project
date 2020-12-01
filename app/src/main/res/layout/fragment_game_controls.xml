@@ -17,10 +17,18 @@
         android:textSize="50sp" />
 
     <TextView
+        android:id="@+id/promptText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:layout_below="@id/levelTitle"
+        android:textSize="20sp" />
+
+    <TextView
         android:id="@+id/gameText1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/levelTitle"
+        android:layout_below="@id/promptText"
         android:layout_marginStart="25dp"
         android:layout_marginTop="30dp"
         android:text="@string/hello_blank_fragment"
