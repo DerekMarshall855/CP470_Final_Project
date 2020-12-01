@@ -15,6 +15,7 @@ public class LevelSelect extends AppCompatActivity {
     private Button level_1;
     private Button level_2;
     private Button level_3;
+    public int chosenLevel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,15 +30,20 @@ public class LevelSelect extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //TODO Pass level (1, 2, 3) to GameActivity
+                chosenLevel = 1;
                 Intent intent = new Intent(LevelSelect.this, GameActivity.class);
+                intent.putExtra("Level", chosenLevel);
                 startActivity(intent);
+
             }
         });
 
         level_2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                chosenLevel = 2;
                 Intent intent = new Intent(LevelSelect.this, GameActivity.class);
+                intent.putExtra("Level", chosenLevel);
                 startActivity(intent);
             }
         });
@@ -45,7 +51,9 @@ public class LevelSelect extends AppCompatActivity {
         level_3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                chosenLevel = 3;
                 Intent intent = new Intent(LevelSelect.this, GameActivity.class);
+                intent.putExtra("Level", chosenLevel);
                 startActivity(intent);
             }
         });

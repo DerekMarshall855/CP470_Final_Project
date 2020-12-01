@@ -82,9 +82,17 @@ public class GameControlsFragment extends Fragment {
     }
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        Bundle bundle;
+        if (this == null) {
+            bundle = getActivity().getIntent().getExtras();
+        }else{
+            bundle = this.getArguments();
+        }
+
+
 
         //change level so it's passed from activity
-        final int level = 1;
+        final int level = bundle.getInt("Level");
 
         //Getting items
         levelName = view.findViewById(R.id.levelTitle);
