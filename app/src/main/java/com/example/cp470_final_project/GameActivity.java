@@ -26,7 +26,6 @@ public class GameActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_test);
-        getWindow().getDecorView().setBackgroundColor(Color.WHITE);
 
         menu = false;
         Point point = new Point();

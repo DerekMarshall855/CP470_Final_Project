@@ -4,6 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/treasure_map"
+    android:orientation="vertical"
     tools:context=".LevelSelect">
 
     <Button
@@ -48,16 +50,19 @@
 
     <TextView
         android:id="@+id/level_menu_title"
-        android:layout_width="100dp"
-        android:layout_height="50dp"
+        android:layout_width="218dp"
+        android:layout_height="83dp"
         android:layout_marginStart="316dp"
-        android:layout_marginTop="53dp"
+        android:layout_marginTop="4dp"
         android:layout_marginEnd="315dp"
-        android:layout_marginBottom="92dp"
+        android:layout_marginBottom="108dp"
         android:gravity="center"
         android:text="@string/level_select"
+        android:textColor="@color/design_default_color_on_secondary"
+        android:textSize="30dp"
         app:layout_constraintBottom_toTopOf="@+id/level_2_button"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.508"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

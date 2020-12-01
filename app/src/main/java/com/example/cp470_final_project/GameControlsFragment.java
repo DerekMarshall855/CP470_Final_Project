@@ -1,9 +1,12 @@
 package com.example.cp470_final_project;
 
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 
 import android.util.Log;
@@ -50,6 +53,7 @@ public class GameControlsFragment extends Fragment {
     JSONObject levelValues,promptValues,answerValues,hintValues,spinnerValues;
     ArrayList<String> aList, hList,pList,sList;
     Toast toast;
+    AlertDialog gameWon;
 
     public GameControlsFragment() {
         // Required empty public constructor
@@ -97,9 +101,6 @@ public class GameControlsFragment extends Fragment {
             bundle = this.getArguments();
         }
 
-
-
-        //change level so it's passed from activity
         final int level = bundle.getInt("Level");
 
         //Getting items
@@ -169,6 +170,25 @@ public class GameControlsFragment extends Fragment {
         ArrayAdapter<CharSequence> adapter = new ArrayAdapter(view.getContext(), android.R.layout.simple_spinner_item, sList);
         gameAns3.setAdapter(adapter);
 
+        final AlertDialog.Builder customBuild = new AlertDialog.Builder(view.getContext());
+
+        //Build end dialog pop-up
+        customBuild.setTitle(R.string.dialogTitle);
+        customBuild.setPositiveButton(R.string.nextLevel, new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                // User clicked OK button
+                Intent intent = new Intent(getContext(), GameActivity.class);
+                intent.putExtra("Level", level+1);
+                startActivity(intent);
+            }
+        });
+        customBuild.setNegativeButton(R.string.returnMain, new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                // User cancelled the dialog
+                Intent intent = new Intent(getContext(), MainActivity.class);
+                startActivity(intent);
+            }
+        });
 
         //Listeners
         hintButton.setOnClickListener(new View.OnClickListener() {
@@ -192,6 +212,7 @@ public class GameControlsFragment extends Fragment {
                         prompt = pList.get(1);
                         promptText.setText(prompt);
                         toast.show();
+                        completion.setProgress(33);
                     } else {
                         Log.i("Fragment", aList.get(0));
                         toast = Toast.makeText(getActivity(), R.string.wrong, Toast.LENGTH_LONG);
@@ -206,6 +227,7 @@ public class GameControlsFragment extends Fragment {
                         prompt = pList.get(2);
                         promptText.setText(prompt);
                         toast.show();
+                        completion.setProgress(66);
                     } else {
                         toast = Toast.makeText(getActivity(), R.string.wrong, Toast.LENGTH_LONG);
                         toast.show();
@@ -214,7 +236,10 @@ public class GameControlsFragment extends Fragment {
                     //Beat the level
                     entry = gameAns3.getSelectedItem().toString();
                     if (entry.equals(aList.get(2))){
+                        completion.setProgress(100);
                         toast.show();
+                        gameWon = customBuild.create();
+                        gameWon.show();
                     } else {
                         toast = Toast.makeText(getActivity(), R.string.wrong, Toast.LENGTH_LONG);
                         toast.show();

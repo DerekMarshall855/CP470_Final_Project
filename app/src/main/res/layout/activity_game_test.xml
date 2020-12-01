@@ -5,15 +5,17 @@
     android:id="@+id/layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".GameActivity">
+    tools:context=".GameActivity"
+    android:baselineAligned="false">
 
     <FrameLayout
         android:id="@+id/game"
+
         android:layout_width="385dp"
+
         android:layout_height="match_parent"
         android:layout_marginLeft="0dp"
         android:layout_toRightOf="@+id/image_button" />
-
 
     <ImageButton
         android:id="@+id/image_button"
@@ -31,3 +33,4 @@
 
 
 </RelativeLayout>
+
