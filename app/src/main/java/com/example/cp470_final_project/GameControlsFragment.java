@@ -15,10 +15,13 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.material.snackbar.Snackbar;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -35,13 +38,16 @@ public class GameControlsFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-    TextView levelName, gameText1, gameText2, gameText3;
+    TextView levelName, gameText1, gameText2, gameText3, promptText;
     EditText gameAns1, gameAns2;
     Spinner gameAns3;
     Button hintButton, submitButton;
     ProgressBar completion;
     String[] promptsList, gameTextsList, answersList, hintsList;
-    String prompts, gameTexts, answers, hints;
+    String prompts, gameTexts, answers, hints, entry;
+    JSONObject levelValues,promptValues,answerValues,hintValues;
+    ArrayList<String> aList, hList;
+    Toast toast;
 
     public GameControlsFragment() {
         // Required empty public constructor
@@ -88,6 +94,7 @@ public class GameControlsFragment extends Fragment {
 
         //Getting items
         levelName = view.findViewById(R.id.levelTitle);
+        promptText = view.findViewById(R.id.promptText);
         gameText1 = view.findViewById(R.id.gameText1);
         gameText2 = view.findViewById(R.id.gameText2);
         gameText3 = view.findViewById(R.id.gameText3);
@@ -111,17 +118,29 @@ public class GameControlsFragment extends Fragment {
         Log.i("Fragment", "Got lists");
 
         //Setting text for level
-        JSONObject levelValues;
+
         levelName.setText(R.string.level + level);
+        aList = new ArrayList<String>();
+        hList = new ArrayList<String>();
         try {
             levelValues = new JSONObject(gameTexts);
             gameText1.setText(levelValues.getString("1"));
             gameText2.setText(levelValues.getString("2"));
             gameText3.setText(levelValues.getString("3"));
+            promptValues = new JSONObject(prompts);
+            promptText.setText(promptValues.getString("1"));
+            answerValues = new JSONObject(answers);
+            aList.add(answerValues.getString("1"));
+            aList.add(answerValues.getString("2"));
+            aList.add(answerValues.getString("3"));
+            hintValues = new JSONObject(hints);
+            hList.add(hintValues.getString("1"));
+            hList.add(hintValues.getString("2"));
+            hList.add(hintValues.getString("3"));
         } catch (JSONException e) {
             e.printStackTrace();
         }
-
+        entry = "";
 
         //Listeners
         hintButton.setOnClickListener(new View.OnClickListener() {
@@ -135,7 +154,17 @@ public class GameControlsFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 //if answers are right --> display congrats page/dialog/whatever, if not show toast to retry
-
+                toast = Toast.makeText(getActivity(), R.string.correct, Toast.LENGTH_LONG);
+                if(gameText2.getVisibility() != View.VISIBLE){
+                    entry = gameAns1.getText().toString();
+                    if (entry == aList.get(0) || aList.get(0) == " "){
+                        toast.show();
+                    } else {
+                        Log.i("Fragment", aList.get(0));
+                        toast = Toast.makeText(getActivity(), R.string.wrong, Toast.LENGTH_LONG);
+                        toast.show();
+                    }
+                }
             }//end onClick
 
         });//end listener
