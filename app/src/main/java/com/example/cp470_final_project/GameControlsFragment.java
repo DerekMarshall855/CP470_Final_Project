@@ -10,6 +10,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
@@ -43,10 +45,10 @@ public class GameControlsFragment extends Fragment {
     Spinner gameAns3;
     Button hintButton, submitButton;
     ProgressBar completion;
-    String[] promptsList, gameTextsList, answersList, hintsList;
-    String prompts, gameTexts, answers, hints, entry, hint,prompt;
-    JSONObject levelValues,promptValues,answerValues,hintValues;
-    ArrayList<String> aList, hList,pList;
+    String[] promptsList, gameTextsList, answersList, hintsList,spinnerList;
+    String prompts, gameTexts, answers, hints, entry, hint,prompt, spinners, spinString;
+    JSONObject levelValues,promptValues,answerValues,hintValues,spinnerValues;
+    ArrayList<String> aList, hList,pList,sList;
     Toast toast;
 
     public GameControlsFragment() {
@@ -110,11 +112,13 @@ public class GameControlsFragment extends Fragment {
         gameTextsList = getResources().getStringArray(R.array.gameTextList);
         answersList = getResources().getStringArray(R.array.gameAnsList);
         hintsList = getResources().getStringArray(R.array.hintList);
+        spinnerList = getResources().getStringArray(R.array.spinnerList);
 
         prompts = promptsList[level-1];
         gameTexts = gameTextsList[level-1];
         answers = answersList[level-1];
         hints = hintsList[level-1];
+        spinners = spinnerList[level-1];
         Log.i("Fragment", "Got lists");
 
         //Setting text for level
@@ -123,6 +127,7 @@ public class GameControlsFragment extends Fragment {
         aList = new ArrayList<String>();
         hList = new ArrayList<String>();
         pList = new ArrayList<String>();
+        sList = new ArrayList<String>();
         try {
             levelValues = new JSONObject(gameTexts);
             gameText1.setText(levelValues.getString("1"));
@@ -141,12 +146,20 @@ public class GameControlsFragment extends Fragment {
             hList.add(hintValues.getString("1"));
             hList.add(hintValues.getString("2"));
             hList.add(hintValues.getString("3"));
+            spinnerValues = new JSONObject(spinners);
+            sList.add(spinnerValues.getString("1"));
+            sList.add(spinnerValues.getString("2"));
+            sList.add(spinnerValues.getString("3"));
+
         } catch (JSONException e) {
             e.printStackTrace();
         }
         entry = "";
         hint = hList.get(0);
         prompt = pList.get(0);
+
+        ArrayAdapter<CharSequence> adapter = new ArrayAdapter(view.getContext(), android.R.layout.simple_spinner_item, sList);
+        gameAns3.setAdapter(adapter);
 
         //Listeners
         hintButton.setOnClickListener(new View.OnClickListener() {
@@ -189,8 +202,9 @@ public class GameControlsFragment extends Fragment {
                         toast.show();
                     }
                 } else {
+                    //Beat the level
                     entry = gameAns3.getSelectedItem().toString();
-                    if (entry.equals(aList.get(2)) || aList.get(2).equals(" ")){
+                    if (entry.equals(aList.get(2))){
                         toast.show();
                     } else {
                         toast = Toast.makeText(getActivity(), R.string.wrong, Toast.LENGTH_LONG);
@@ -198,7 +212,6 @@ public class GameControlsFragment extends Fragment {
                     }
                 }
             }//end onClick
-
         });//end listener
 
 

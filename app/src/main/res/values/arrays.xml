@@ -26,7 +26,11 @@
     </string-array>
 
     <string-array name="gameAnsList">
-        <item>{\"1\":\" \", \"2\":\"name\", \"3\":\";\"}</item>
+        <item>{\"1\":\" \", \"2\":\"name\", \"3\":\"missing ;\"}</item>
+        <item>{\"1\":\"\", \"2\":\"\", \"3\":\"\"}</item>
+    </string-array>
+    <string-array name="spinnerList">
+        <item>{\"1\":\"Boolean\", \"2\":\"true\", \"3\":\"missing ;\"}</item>
         <item>{\"1\":\"\", \"2\":\"\", \"3\":\"\"}</item>
     </string-array>
 </resources>
