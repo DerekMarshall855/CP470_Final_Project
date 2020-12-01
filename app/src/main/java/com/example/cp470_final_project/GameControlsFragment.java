@@ -6,6 +6,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,8 +17,6 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.google.android.material.snackbar.Snackbar;
-
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -83,9 +82,17 @@ public class GameControlsFragment extends Fragment {
     }
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        Bundle bundle;
+        if (this == null) {
+            bundle = getActivity().getIntent().getExtras();
+        }else{
+            bundle = this.getArguments();
+        }
+
+
 
         //change level so it's passed from activity
-        final int level = 1;
+        final int level = bundle.getInt("Level");
 
         //Getting items
         levelName = view.findViewById(R.id.levelTitle);
@@ -109,6 +116,7 @@ public class GameControlsFragment extends Fragment {
         gameTexts = gameTextsList[level-1];
         answers = answersList[level-1];
         hints = hintsList[level-1];
+        Log.i("Fragment", "Got lists");
 
         //Setting text for level
         JSONObject levelValues;

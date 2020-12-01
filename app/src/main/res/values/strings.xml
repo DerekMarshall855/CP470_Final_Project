@@ -12,7 +12,6 @@
     <string name="level">Level</string>
     <string name="hint">Give me a hint</string>
     <string name="submit">Check answers</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">blank text</string>
     <string name="controls">Controls</string>
     <string name="level_select">Level Select</string>
