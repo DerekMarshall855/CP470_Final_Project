@@ -76,7 +76,8 @@ public class MainActivity extends AppCompatActivity {
             case R.id.help_action:
                 Log.d("Toolbar", "Help selected");
                 AlertDialog.Builder builder = new AlertDialog.Builder(this);
-                builder.setTitle(R.string.help_dialog_title);
+                builder.setTitle(R.string.about);
+                builder.setMessage(R.string.appInfo);
                 // Add the buttons
                 builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
@@ -92,6 +93,9 @@ public class MainActivity extends AppCompatActivity {
                 AlertDialog dialog = builder.create();
                 dialog.show();
                 //break;
+            case R.id.notesTool:
+                Log.d("Toolbar", "Notes selected");
+
 
         }
         return true;
