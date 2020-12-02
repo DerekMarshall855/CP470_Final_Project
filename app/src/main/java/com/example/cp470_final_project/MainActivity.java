@@ -15,8 +15,10 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.media.MediaPlayer;
 import android.widget.ListView;
@@ -32,6 +34,10 @@ public class MainActivity extends AppCompatActivity {
     ListView notesList;
     ArrayList<String> notesLog = new ArrayList<String>();
     NoteAdapter noteAdapter;
+    Button createButton;
+    AlertDialog.Builder enterNote;
+    EditText enteredNote;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -79,12 +85,45 @@ public class MainActivity extends AppCompatActivity {
         notesList = findViewById(R.id.notesListView);
         noteAdapter = new NoteAdapter(this);
         notesList.setAdapter(noteAdapter);
+        notesLog.add(getString(R.string.noteBlurb));
+        noteAdapter.notifyDataSetChanged();
+
+        notesList.setOnItemLongClickListener(new android.widget.AdapterView.OnItemLongClickListener(){
+            @Override
+            public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
+                notesLog.remove(i);
+                noteAdapter.notifyDataSetChanged();
+                return false;
+            }
+        });
 
     }
 
     public boolean onCreateOptionsMenu(Menu m){
         getMenuInflater().inflate(R.menu.menu_main, m);
         return true;
+    }
+    public void newNote(View view){
+        enterNote = new AlertDialog.Builder(this);
+        LayoutInflater inflater = getLayoutInflater();
+        final View dialogView = inflater.inflate(R.layout.activity_custom_dialog, null);
+        enterNote.setView(dialogView);
+        enterNote.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                // User clicked OK button
+                enteredNote = dialogView.findViewById(R.id.note);
+                notesLog.add(enteredNote.getText().toString());
+                noteAdapter.notifyDataSetChanged();
+            }
+        });
+        enterNote.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                // User cancelled the dialog
+            }
+        });
+        // Create the AlertDialog
+        AlertDialog customDialog = enterNote.create();
+        customDialog.show();
     }
 
     public boolean onOptionsItemSelected(MenuItem item){
@@ -164,6 +203,14 @@ public class MainActivity extends AppCompatActivity {
 
             TextView message = (TextView)contentView.findViewById(R.id.noteText);
             message.setText(getItem(position)); // get the string at position
+
+            if (createButton != null) {
+
+                createButton.setVisibility(View.INVISIBLE);
+            }
+            createButton = contentView.findViewById(R.id.newNoteButton);
+
+            createButton.setVisibility(View.VISIBLE);
             return contentView;
         }
 
