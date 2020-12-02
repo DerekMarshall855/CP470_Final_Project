@@ -11,26 +11,31 @@
     </string-array>
 
     <string-array name="promptList">
-        <item>{\"1\":\"Welcome! Let’s start by creating your character. Why don’t you give them a name?\", \"2\":\"Now let’s show that name off by printing it to the screen!\", \"3\":\"Before we go any further, we should double check that everything’s okay. What’s wrong with this line?\"}</item>
-        <item>{\"1\":\"\", \"2\":\"\", \"3\":\"\"}</item>
+        <item>{\"1\":\"Welcome! Let\’s start by creating your character. Why don’t you give them a name?\", \"2\":\"Now let\’s show that name off by printing it to the screen!\", \"3\":\"Before we go any further, we should double check that everything’s okay. What\’s wrong with this line?\"}</item>
+        <item>{\"1\":\"As a pirate you have to keep track of your doubloons. How about we make a variable called numDoubloons? \", \"2\":\"Without doing anything you constantly gain another doubloon, how do you increment numDoubloons?\", \"3\":\"Before we go any further, we should double check that everything\’s okay. What\’s wrong with this line?\"}</item>
+        <item>{\"1\":\"If you have numDoubloons on numShips how do you store that in totalDoubloons?\", \"2\":\"If numPirates are each numPaces away from treasure, how do we store that in totalPaces?\", \"3\":\"What\'s wrong with this code?\"}</item>
     </string-array>
 
     <string-array name="hintList">
         <item>{\"1\":\"Words are called strings and need to be surrounded by quotes (\\")\", \"2\":\"You can refer to something you\'ve saved as a variable by typing its name\", \"3\":\"Lines must end with a certain special character\"}</item>
-        <item>{\"1\":\"\", \"2\":\"\", \"3\":\"\"}</item>
+        <item>{\"1\":\"The name you want and ;\", \"2\":\"To decrement you use --\", \"3\":\"Did we initialize the value?\"}</item>
+        <item>{\"1\":\"multiply numDoubloons by numShips\", \"2\":\"multiply numPirates by numPaces\", \"3\":\"look at the types\"}</item>
     </string-array>
 
     <string-array name="gameTextList">
-        <item>{\"1\":\"String name = \", \"2\":\"System.out.print(\", \"3\":\"Boolean proceed = true\"}</item>
-        <item>{\"1\":\"\", \"2\":\"\", \"3\":\"\"}</item>
+        <item>{\"1\":\"String name = \", \"2\":\"System.out.print\", \"3\":\"Boolean proceed = true\"}</item>
+        <item>{\"1\":\"int \", \"2\":\"numDoubloons\", \"3\":\"numDoubloons--;\"}</item>
+        <item>{\"1\":\"totalDoubloons = \", \"2\":\"totalPaces = \", \"3\":\"int totalGold = num * 0.5;\"}</item>
     </string-array>
 
     <string-array name="gameAnsList">
-        <item>{\"1\":\" \", \"2\":\"name\", \"3\":\"missing ;\"}</item>
-        <item>{\"1\":\"\", \"2\":\"\", \"3\":\"\"}</item>
+        <item>{\"1\":\" \", \"2\":\"(name);\", \"3\":\"missing ;\"}</item>
+        <item>{\"1\":\"numDoubloons;\", \"2\":\"++;\", \"3\":\"must initialize\"}</item>
+        <item>{\"1\":\"numDoubloons * numShips;\", \"2\":\"numPirates * numPaces;\", \"3\":\"incorrect types\"}</item>
     </string-array>
     <string-array name="spinnerList">
         <item>{\"1\":\"Boolean\", \"2\":\"true\", \"3\":\"missing ;\"}</item>
-        <item>{\"1\":\"\", \"2\":\"\", \"3\":\"\"}</item>
+        <item>{\"1\":\"Missing ;\", \"2\":\"must initialize\", \"3\":\"cannot --\"}</item>
+        <item>{\"1\":\"can\'t multiply in an init\", \"2\":\"incorrect types\", \"3\":\"doubloons aren\'t gold\"}</item>
     </string-array>
 </resources>

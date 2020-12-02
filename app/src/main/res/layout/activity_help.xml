@@ -13,18 +13,21 @@
         android:layout_height="50dp"
         android:gravity="center"
         android:textSize="30dp"
-        android:text="How to Play" />
+        android:text="@string/howTo" />
 
     <TextView
         android:id="@+id/textView4"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="instructions and other info that we can add later" />
+        android:layout_marginBottom="25dp"
+        android:textSize="20dp"
+        android:text="@string/instructions" />
 
     <ImageButton
         android:id="@+id/helpPrevious"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="bottom"
+        android:contentDescription="@string/descBack"
         app:srcCompat="@drawable/ic_baseline_arrow_back_24" />
 </LinearLayout>
