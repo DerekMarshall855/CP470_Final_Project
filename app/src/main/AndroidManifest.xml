@@ -9,7 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
-        <activity android:name=".LevelSelect" android:screenOrientation="landscape"></activity>
+
+        <activity
+            android:name=".LevelSelect"
+            android:screenOrientation="landscape" />
         <activity
             android:name=".GameActivity"
             android:screenOrientation="landscape" />
