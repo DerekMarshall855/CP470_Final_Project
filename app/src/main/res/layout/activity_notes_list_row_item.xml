@@ -26,6 +26,7 @@
             android:layout_weight="1"
             android:gravity="right"
             android:text = "@string/newNote"
+            android:onClick="newNote"
             />
         <Button
             android:id="@+id/saveButton"
@@ -34,6 +35,7 @@
             android:layout_weight="1"
             android:gravity="right"
             android:text = "@string/save"
+            android:onClick="saveNote"
             />
     </LinearLayout>
 
