@@ -3,22 +3,35 @@ package com.example.cp470_final_project;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.drawerlayout.widget.DrawerLayout;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.media.MediaPlayer;
+import android.widget.ListView;
+import android.widget.TextView;
+
+import java.util.ArrayList;
 
 
 public class MainActivity extends AppCompatActivity {
     protected static final String ACTIVITY_NAME = "MainActivity";
     public static MediaPlayer bgm;
+    DrawerLayout drawerLayout;
+    ListView notesList;
+    ArrayList<String> notesLog = new ArrayList<String>();
+    NoteAdapter noteAdapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,7 +75,10 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
+        drawerLayout = findViewById(R.id.notesDrawer);
+        notesList = findViewById(R.id.notesListView);
+        noteAdapter = new NoteAdapter(this);
+        notesList.setAdapter(noteAdapter);
 
     }
 
@@ -95,8 +111,9 @@ public class MainActivity extends AppCompatActivity {
                 //break;
             case R.id.notesTool:
                 Log.d("Toolbar", "Notes selected");
-
-
+                drawerLayout = findViewById(R.id.notesDrawer);
+                notesList = findViewById(R.id.notesListView);
+                drawerLayout.openDrawer(notesList);
         }
         return true;
     }
@@ -127,5 +144,28 @@ public class MainActivity extends AppCompatActivity {
         super.onDestroy();
         bgm.stop();
         Log.i(ACTIVITY_NAME, "In onDestroy()");
+
+    }
+    private class NoteAdapter extends ArrayAdapter<String> {
+        public NoteAdapter(Context ctx){
+            super(ctx,0);
+        }
+
+        public int getCount(){
+            return notesLog.size();
+        }
+
+        public String getItem(int position){
+            return notesLog.get(position);
+        }
+        public View getView(int position, View convertView, ViewGroup parent){
+            LayoutInflater inflater = MainActivity.this.getLayoutInflater();
+            View contentView = inflater.inflate(R.layout.activity_notes_list_row_item, null);
+
+            TextView message = (TextView)contentView.findViewById(R.id.noteText);
+            message.setText(getItem(position)); // get the string at position
+            return contentView;
+        }
+
     }
 }
