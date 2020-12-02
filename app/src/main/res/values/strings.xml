@@ -28,5 +28,8 @@
     <string name="descMap">Pirate Map</string>
     <string name="descBack">Back button</string>
     <string name="descPirate">Pirate Pete</string>
+    <string name="notes">Notes</string>
+    <string name="about">About</string>
+    <string name="appInfo">Version 1.0</string>
 
 </resources>
