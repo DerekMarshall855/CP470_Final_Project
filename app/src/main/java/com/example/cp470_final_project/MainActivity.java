@@ -79,6 +79,9 @@ public class MainActivity extends AppCompatActivity {
         notesList = findViewById(R.id.notesListView);
         noteAdapter = new NoteAdapter(this);
         notesList.setAdapter(noteAdapter);
+        Button saveButton;
+        notesLog.add("Sample note");
+        noteAdapter.notifyDataSetChanged();
 
     }
 

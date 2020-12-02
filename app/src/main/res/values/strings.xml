@@ -31,5 +31,7 @@
     <string name="notes">Notes</string>
     <string name="about">About</string>
     <string name="appInfo">Version 1.0</string>
+    <string name="save">Save Note</string>
+    <string name="newNote">New Note</string>
 
 </resources>
