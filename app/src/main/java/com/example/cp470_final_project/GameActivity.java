@@ -51,13 +51,13 @@ public class GameActivity extends AppCompatActivity {
         }
 
 
-        //controlButton.setOnClickListener(new View.OnClickListener() {
-          //  @Override
-            //public void onClick(View v) {
-
-
-     //       }
-      //  });
+        ImageButton previous = (ImageButton)findViewById(R.id.gamePrevious);
+        previous.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
     }
 }

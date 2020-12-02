@@ -8,6 +8,7 @@ import android.os.Handler;
 import android.os.Looper;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ProgressBar;
 
 public class LevelSelect extends AppCompatActivity {
@@ -29,7 +30,6 @@ public class LevelSelect extends AppCompatActivity {
         level_1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //TODO Pass level (1, 2, 3) to GameActivity
                 chosenLevel = 1;
                 Intent intent = new Intent(LevelSelect.this, GameActivity.class);
                 intent.putExtra("Level", chosenLevel);
@@ -55,6 +55,14 @@ public class LevelSelect extends AppCompatActivity {
                 Intent intent = new Intent(LevelSelect.this, GameActivity.class);
                 intent.putExtra("Level", chosenLevel);
                 startActivity(intent);
+            }
+        });
+
+        ImageButton previous = (ImageButton)findViewById(R.id.levelPrevious);
+        previous.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
             }
         });
 
