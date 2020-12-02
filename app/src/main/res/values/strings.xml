@@ -33,5 +33,7 @@
     <string name="appInfo">Version 1.0</string>
     <string name="save">Save Note</string>
     <string name="newNote">New Note</string>
+    <string name="noteBlurb">You can enter your own notes here on concepts or syntax you\'re struggling with. Click a note to remove it.</string>
+    <string name="delete">Delete this note?</string>
 
 </resources>

@@ -15,6 +15,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -33,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
     ListView notesList;
     ArrayList<String> notesLog = new ArrayList<String>();
     NoteAdapter noteAdapter;
-    Button saveButton, createButton;
+    Button createButton;
     AlertDialog.Builder enterNote;
     EditText enteredNote;
 
@@ -84,18 +85,23 @@ public class MainActivity extends AppCompatActivity {
         notesList = findViewById(R.id.notesListView);
         noteAdapter = new NoteAdapter(this);
         notesList.setAdapter(noteAdapter);
-        notesLog.add("text");
+        notesLog.add(getString(R.string.noteBlurb));
         noteAdapter.notifyDataSetChanged();
+
+        notesList.setOnItemLongClickListener(new android.widget.AdapterView.OnItemLongClickListener(){
+            @Override
+            public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
+                notesLog.remove(i);
+                noteAdapter.notifyDataSetChanged();
+                return false;
+            }
+        });
 
     }
 
     public boolean onCreateOptionsMenu(Menu m){
         getMenuInflater().inflate(R.menu.menu_main, m);
         return true;
-    }
-    public void saveNote(View view){
-        notesLog.add("text");
-        noteAdapter.notifyDataSetChanged();
     }
     public void newNote(View view){
         enterNote = new AlertDialog.Builder(this);
@@ -198,13 +204,12 @@ public class MainActivity extends AppCompatActivity {
             TextView message = (TextView)contentView.findViewById(R.id.noteText);
             message.setText(getItem(position)); // get the string at position
 
-            if (saveButton != null && createButton != null) {
-                saveButton.setVisibility(View.INVISIBLE);
+            if (createButton != null) {
+
                 createButton.setVisibility(View.INVISIBLE);
             }
-            saveButton = contentView.findViewById(R.id.saveButton);
             createButton = contentView.findViewById(R.id.newNoteButton);
-            saveButton.setVisibility(View.VISIBLE);
+
             createButton.setVisibility(View.VISIBLE);
             return contentView;
         }
