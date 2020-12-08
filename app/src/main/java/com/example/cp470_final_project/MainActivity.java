@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
     Button createButton;
     AlertDialog.Builder enterNote;
     EditText enteredNote;
-    String noteS, noteD;
+    String noteS, noteD, currentNote;
     TextView noteCondensed;
 
 
@@ -120,6 +120,8 @@ public class MainActivity extends AppCompatActivity {
                 details.setActionTextColor(Color.CYAN);
                 TextView snackbarTextView = (TextView) details.getView().findViewById(com.google.android.material.R.id.snackbar_text);
                 snackbarTextView.setMaxLines(5);
+
+                currentNote = noteS;
                 details.show();
             }
         });
@@ -322,7 +324,41 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             Log.i(ACTIVITY_NAME, "Edit note clicked");
-            // Code to undo the user's last action
+            enterNote = new AlertDialog.Builder(v.getContext());
+            LayoutInflater inflater = getLayoutInflater();
+            final View dialogView = inflater.inflate(R.layout.activity_custom_dialog, null);
+            enterNote.setView(dialogView);
+            TextView title = dialogView.findViewById(R.id.textView);
+            title.setText("Edit Note");
+            enteredNote = dialogView.findViewById(R.id.note);
+            enteredNote.setText(currentNote);
+            enterNote.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int id) {
+                    // User clicked OK button - add new note to database + list_view
+                    int index = notesLog.indexOf(currentNote);
+                    notesLog.set(index, enteredNote.getText().toString());
+                    noteAdapter.notifyDataSetChanged();
+
+                    //Database
+                    Date currentTime = Calendar.getInstance().getTime();
+                    ContentValues values = new ContentValues();
+                    values.put(NoteDatabaseHelper.KEY_NOTE, enteredNote.getText().toString());
+                    values.put(NoteDatabaseHelper.KEY_DETAILS, currentTime.toString());
+                    String selection = NoteDatabaseHelper.KEY_NOTE + " LIKE ?";
+                    String[] selectionArgs = { currentNote };
+                    db.update(NoteDatabaseHelper.TABLE_NAME, values, selection, selectionArgs);
+
+                }
+            });
+            enterNote.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int id) {
+                    // User cancelled the dialog
+                }
+            });
+            // Create the AlertDialog
+            AlertDialog customDialog = enterNote.create();
+            customDialog.show();
+
         }
     }
 }
