@@ -51,7 +51,6 @@ public class MainActivity extends AppCompatActivity {
     AlertDialog.Builder enterNote;
     EditText enteredNote;
     String noteS, noteD, currentNote;
-    TextView noteCondensed;
 
 
     @Override
