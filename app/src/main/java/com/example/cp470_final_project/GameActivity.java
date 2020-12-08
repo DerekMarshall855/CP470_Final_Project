@@ -167,19 +167,6 @@ public class GameActivity extends AppCompatActivity {
             Log.i(ACTIVITY_NAME,"column name "+cursor.getColumnName(i));
         }
 
-        if (notesLog.size() == 0 ){
-            String dfault = getString(R.string.noteBlurb);
-            notesLog.add(dfault);
-            noteAdapter.notifyDataSetChanged();
-            Date currentTime = Calendar.getInstance().getTime();
-
-            ContentValues values = new ContentValues();
-            values.put(NoteDatabaseHelper.KEY_NOTE, dfault);
-            values.put(NoteDatabaseHelper.KEY_DETAILS, currentTime.toString());
-            Log.i(ACTIVITY_NAME, "Inserting: " + dfault + currentTime.toString());
-            db.insert(NoteDatabaseHelper.TABLE_NAME, null, values);
-        }
-
     }
 
     public boolean onCreateOptionsMenu(Menu m){

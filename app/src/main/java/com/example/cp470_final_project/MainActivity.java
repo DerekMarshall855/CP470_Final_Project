@@ -263,6 +263,27 @@ public class MainActivity extends AppCompatActivity {
         super.onStart();
         bgm.start();
         Log.i(ACTIVITY_NAME, "In onStart()");
+
+        datasource = new NoteDatabaseHelper(this);
+        db = datasource.getWritableDatabase();
+
+        cursor = db.query(NoteDatabaseHelper.TABLE_NAME,
+                columns, null, null, null, null, null);
+        cursor.moveToFirst();
+        while(!cursor.isAfterLast() ) {
+            Log.i(ACTIVITY_NAME, "SQL MESSAGE:" + cursor.getString(cursor.getColumnIndex(NoteDatabaseHelper.KEY_NOTE)));
+            if (!notesLog.contains(cursor.getString(cursor.getColumnIndex(NoteDatabaseHelper.KEY_NOTE)))) {
+                notesLog.add(cursor.getString(cursor.getColumnIndex(NoteDatabaseHelper.KEY_NOTE)));
+            }
+            Log.i(ACTIVITY_NAME, "Cursor's  column count =" + cursor.getColumnCount());
+            cursor.moveToNext();
+        }
+        for (int i = 0; i < cursor.getColumnCount(); i++){
+            Log.i(ACTIVITY_NAME,"column name "+cursor.getColumnName(i));
+        }
+
+        noteAdapter.notifyDataSetChanged();
+
     }
 
     protected void onResume() {
