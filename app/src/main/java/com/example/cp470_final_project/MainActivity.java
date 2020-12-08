@@ -133,15 +133,12 @@ public class MainActivity extends AppCompatActivity {
                 String[] selectionArgs = {String.valueOf(position+1)};
                 int deletedRows = db.delete(NoteDatabaseHelper.TABLE_NAME, selection, selectionArgs);
                 Log.i(ACTIVITY_NAME, "Number deleted:" + deletedRows);
-
                 if (deletedRows == 0){
                     selection = NoteDatabaseHelper.KEY_NOTE + " LIKE ?";
                     String[] selectionArg = {noteAdapter.getItem(position)};
                     deletedRows = db.delete(NoteDatabaseHelper.TABLE_NAME, selection, selectionArg);
                     Log.i(ACTIVITY_NAME, "Number deleted based on content:" + deletedRows);
-
                 }
-
                 notesLog.remove(position);
                 noteAdapter.notifyDataSetChanged();
                 return true;
