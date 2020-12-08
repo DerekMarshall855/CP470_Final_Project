@@ -5,9 +5,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -24,10 +27,18 @@ import android.media.MediaPlayer;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.google.android.material.snackbar.Snackbar;
+
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 
 
 public class MainActivity extends AppCompatActivity {
+    private NoteDatabaseHelper datasource;
+    private SQLiteDatabase db;
+    private String[] columns = {NoteDatabaseHelper.KEY_NOTE};
+    Cursor cursor;
     protected static final String ACTIVITY_NAME = "MainActivity";
     public static MediaPlayer bgm;
     DrawerLayout drawerLayout;
@@ -37,6 +48,8 @@ public class MainActivity extends AppCompatActivity {
     Button createButton;
     AlertDialog.Builder enterNote;
     EditText enteredNote;
+    String noteS, noteD;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,21 +94,80 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        //Notes section
+        datasource = new NoteDatabaseHelper(this);
+        db = datasource.getWritableDatabase();
+
         drawerLayout = findViewById(R.id.notesDrawer);
         notesList = findViewById(R.id.notesListView);
         noteAdapter = new NoteAdapter(this);
         notesList.setAdapter(noteAdapter);
-        notesLog.add(getString(R.string.noteBlurb));
-        noteAdapter.notifyDataSetChanged();
+
+        notesList.setOnItemClickListener(new android.widget.AdapterView.OnItemClickListener(){
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+                noteS = noteAdapter.getItem(position);
+                String selection = NoteDatabaseHelper.KEY_ID + " LIKE ?";
+                // Specify arguments in placeholder order.
+                String[] selectionArgs = {String.valueOf(position+1)};
+                cursor = db.query(NoteDatabaseHelper.TABLE_NAME, columns, selection, selectionArgs, null, null, null);
+                //noteD = ???;
+                if (cursor != null){
+                    cursor.moveToFirst();
+                    noteD = cursor.getString(cursor.getColumnIndexOrThrow(NoteDatabaseHelper.KEY_DETAILS));
+                }
+
+                Snackbar details = Snackbar.make(findViewById(R.id.notesDrawer), noteS + noteD, Snackbar.LENGTH_LONG);
+                details.show();
+            }
+        });
 
         notesList.setOnItemLongClickListener(new android.widget.AdapterView.OnItemLongClickListener(){
             @Override
-            public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
-                notesLog.remove(i);
+            public boolean onItemLongClick(AdapterView<?> adapterView, View view, int position, long l) {
+
+                // Define 'where' part of query.
+                String selection = NoteDatabaseHelper.KEY_ID + " LIKE ?";
+                // Specify arguments in placeholder order.
+                String[] selectionArgs = {String.valueOf(position+1)};
+                int deletedRows = db.delete(NoteDatabaseHelper.TABLE_NAME, selection, selectionArgs);
+
+                Log.i(ACTIVITY_NAME, "Number deleted:" + deletedRows);
+
+                notesLog.remove(position);
                 noteAdapter.notifyDataSetChanged();
                 return false;
             }
         });
+
+
+        //Database - Loading saved notes
+
+        cursor = db.query(NoteDatabaseHelper.TABLE_NAME,
+                columns, null, null, null, null, null);
+        cursor.moveToFirst();
+        while(!cursor.isAfterLast() ) {
+            Log.i(ACTIVITY_NAME, "SQL MESSAGE:" + cursor.getString(cursor.getColumnIndex(NoteDatabaseHelper.KEY_NOTE)));
+            notesLog.add(cursor.getString(cursor.getColumnIndex(NoteDatabaseHelper.KEY_NOTE)));
+            Log.i(ACTIVITY_NAME, "Cursor's  column count =" + cursor.getColumnCount());
+            cursor.moveToNext();
+        }
+        for (int i = 0; i < cursor.getColumnCount(); i++){
+            Log.i(ACTIVITY_NAME,"column name "+cursor.getColumnName(i));
+        }
+
+        if (notesLog.size() == 0 ){
+            String dfault = getString(R.string.noteBlurb);
+            notesLog.add(dfault);
+            noteAdapter.notifyDataSetChanged();
+            Date currentTime = Calendar.getInstance().getTime();
+
+            ContentValues values = new ContentValues();
+            values.put(NoteDatabaseHelper.KEY_NOTE, dfault);
+            values.put(NoteDatabaseHelper.KEY_DETAILS, currentTime.toString());
+            Log.i(ACTIVITY_NAME, "Inserting: " + dfault + currentTime.toString());
+            db.insert(NoteDatabaseHelper.TABLE_NAME, null, values);
+        }
 
     }
 
@@ -110,10 +182,19 @@ public class MainActivity extends AppCompatActivity {
         enterNote.setView(dialogView);
         enterNote.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
-                // User clicked OK button
+                // User clicked OK button - add new note to database + list_view
                 enteredNote = dialogView.findViewById(R.id.note);
                 notesLog.add(enteredNote.getText().toString());
                 noteAdapter.notifyDataSetChanged();
+
+                //Database
+                Date currentTime = Calendar.getInstance().getTime();
+                ContentValues values = new ContentValues();
+                values.put(NoteDatabaseHelper.KEY_NOTE, enteredNote.getText().toString());
+                values.put(NoteDatabaseHelper.KEY_DETAILS, currentTime.toString());
+                Log.i(ACTIVITY_NAME, "Inserting: " + enteredNote.getText().toString() + currentTime.toString());
+                db.insert(NoteDatabaseHelper.TABLE_NAME, null, values);
+
             }
         });
         enterNote.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
