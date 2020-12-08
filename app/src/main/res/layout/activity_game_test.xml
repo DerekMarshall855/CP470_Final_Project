@@ -41,7 +41,7 @@
             android:layout_below = "@id/toolbar"/>
 
         <ImageView
-            android:id="@+id/image_button_pirate"
+            android:id="@+id/imagePirate"
             android:layout_width="158dp"
             android:layout_height="137dp"
             android:layout_toLeftOf = "@id/game"
@@ -53,10 +53,11 @@
 
         <ImageButton
             android:id="@+id/gamePrevious"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="65dp"
+            android:layout_height="30dp"
             android:layout_alignBottom="@id/image_button"
             android:contentDescription="@string/descBack"
+            android:background="#E686D7DD"
             app:srcCompat="@drawable/ic_baseline_arrow_back_24" />
 
 

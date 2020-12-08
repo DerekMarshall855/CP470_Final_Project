@@ -11,6 +11,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
@@ -30,6 +31,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
@@ -101,6 +103,18 @@ public class GameActivity extends AppCompatActivity {
             }
         });
 
+        //Skin
+        SharedPreferences sharedPrefs = getSharedPreferences("Skin", 0);
+        String skinSelected = sharedPrefs.getString("Skin", "pirate");
+        Log.i(ACTIVITY_NAME, "User skin: " + skinSelected);
+        ImageView pirate = findViewById(R.id.imagePirate);
+        if (skinSelected.equals("pirate")) {
+            pirate.setImageResource(R.drawable.pirate);
+        } else if (skinSelected.equals("pirate2")){
+            pirate.setImageResource(R.drawable.pirate2);
+        } else if (skinSelected.equals("pirate3")){
+            pirate.setImageResource(R.drawable.pirate3);
+        }
 
         //TOOLBAR
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -258,6 +272,21 @@ public class GameActivity extends AppCompatActivity {
         db.close();
         cursor.close();
         Log.i(ACTIVITY_NAME, "In onDestroy()");
+    }
+    protected void onStart() {
+        super.onStart();
+        Log.i(ACTIVITY_NAME, "In onStart()");
+        SharedPreferences sharedPrefs = getSharedPreferences("Skin", 0);
+        String skinSelected = sharedPrefs.getString("Skin", "pirate");
+        Log.i(ACTIVITY_NAME, "User skin: " + skinSelected);
+        ImageView pirate = findViewById(R.id.imagePirate);
+        if (skinSelected.equals("pirate")) {
+            pirate.setImageResource(R.drawable.pirate);
+        } else if (skinSelected.equals("pirate2")){
+            pirate.setImageResource(R.drawable.pirate2);
+        } else if (skinSelected.equals("pirate3")){
+            pirate.setImageResource(R.drawable.pirate3);
+        }
     }
 
     private class NoteAdapter extends ArrayAdapter<String> {
