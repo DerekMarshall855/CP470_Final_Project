@@ -14,7 +14,7 @@
     <string name="submit">Check answer</string>
     <string name="hello_blank_fragment">answer</string>
     <string name="controls">Controls</string>
-    <string name="level_select">Level Select</string>
+    <string name="level_select"><u>Level Select</u></string>
     <string name="level_1">Level One</string>
     <string name="level_2">Level Two</string>
     <string name="level_3">Level Three</string>
@@ -30,10 +30,9 @@
     <string name="descPirate">Pirate Pete</string>
     <string name="notes">Notes</string>
     <string name="about">About</string>
-    <string name="appInfo">Version 1.0</string>
+    <string name="appInfo">Version 1.0 by Taite LaGrange, Arhan Ikram, Derek Marshall, Rebecca Knezy, and Joanne Bui.</string>
     <string name="save">Save Note</string>
     <string name="newNote">New Note</string>
-    <string name="noteBlurb">You can enter your own notes here on concepts or syntax you\'re struggling with. Long click a note to remove it.</string>
+    <string name="noteBlurb">You can enter your own notes here on concepts or syntax you\'re struggling with. Tap a note for more information. Hold a note to remove it.</string>
     <string name="delete">Delete this note?</string>
-
 </resources>

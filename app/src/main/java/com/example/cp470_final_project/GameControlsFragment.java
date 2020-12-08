@@ -95,13 +95,6 @@ public class GameControlsFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         Bundle bundle;
-        /*
-        if (this == null) {
-            bundle = getActivity().getIntent().getExtras();
-        }else{
-            bundle = this.getArguments();
-        }
-         */
         bundle = getActivity().getIntent().getExtras();
 
         final int level = bundle.getInt("Level");
