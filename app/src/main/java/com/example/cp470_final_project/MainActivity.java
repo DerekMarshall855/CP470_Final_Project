@@ -11,6 +11,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -38,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
     private NoteDatabaseHelper datasource;
     private SQLiteDatabase db;
     private String[] columns = {NoteDatabaseHelper.KEY_NOTE};
+    private String[] dets = {NoteDatabaseHelper.KEY_ID, NoteDatabaseHelper.KEY_DETAILS};
     Cursor cursor;
     protected static final String ACTIVITY_NAME = "MainActivity";
     public static MediaPlayer bgm;
@@ -107,17 +109,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
                 noteS = noteAdapter.getItem(position);
-                String selection = NoteDatabaseHelper.KEY_ID + " LIKE ?";
-                // Specify arguments in placeholder order.
-                String[] selectionArgs = {String.valueOf(position+1)};
-                cursor = db.query(NoteDatabaseHelper.TABLE_NAME, columns, selection, selectionArgs, null, null, null);
-                //noteD = ???;
-                if (cursor != null){
-                    cursor.moveToFirst();
-                    noteD = cursor.getString(cursor.getColumnIndexOrThrow(NoteDatabaseHelper.KEY_DETAILS));
+                cursor =  db.rawQuery("select * from " + NoteDatabaseHelper.TABLE_NAME + " where " + NoteDatabaseHelper.KEY_NOTE + "='" + noteS + "'" , null);
+                cursor.moveToFirst();
+                if (cursor != null && cursor.getCount() > 0){
+                    noteD = cursor.getString(cursor.getColumnIndex(NoteDatabaseHelper.KEY_DETAILS));
                 }
-
-                Snackbar details = Snackbar.make(findViewById(R.id.notesDrawer), noteS + noteD, Snackbar.LENGTH_LONG);
+                Snackbar details = Snackbar.make(findViewById(R.id.notesDrawer), "Note: " + noteS + " Details: " + noteD, Snackbar.LENGTH_LONG);
+                details.setAction("Edit Note", new EditNoteListener());
+                details.setActionTextColor(Color.CYAN);
                 details.show();
             }
         });
@@ -125,18 +124,16 @@ public class MainActivity extends AppCompatActivity {
         notesList.setOnItemLongClickListener(new android.widget.AdapterView.OnItemLongClickListener(){
             @Override
             public boolean onItemLongClick(AdapterView<?> adapterView, View view, int position, long l) {
-
                 // Define 'where' part of query.
                 String selection = NoteDatabaseHelper.KEY_ID + " LIKE ?";
                 // Specify arguments in placeholder order.
                 String[] selectionArgs = {String.valueOf(position+1)};
                 int deletedRows = db.delete(NoteDatabaseHelper.TABLE_NAME, selection, selectionArgs);
-
                 Log.i(ACTIVITY_NAME, "Number deleted:" + deletedRows);
 
                 notesLog.remove(position);
                 noteAdapter.notifyDataSetChanged();
-                return false;
+                return true;
             }
         });
 
@@ -171,6 +168,25 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    //For testing purposes
+    public String cursorToString(Cursor cursor){
+        String cursorString = "";
+        if (cursor.moveToFirst() ){
+            String[] columnNames = cursor.getColumnNames();
+            for (String name: columnNames)
+                cursorString += String.format("%s ][ ", name);
+            cursorString += "\n";
+            do {
+                for (String name: columnNames) {
+                    cursorString += String.format("%s ][ ",
+                            cursor.getString(cursor.getColumnIndex(name)));
+                }
+                cursorString += "\n";
+            } while (cursor.moveToNext());
+        }
+        return cursorString;
+    }
+
     public boolean onCreateOptionsMenu(Menu m){
         getMenuInflater().inflate(R.menu.menu_main, m);
         return true;
@@ -193,7 +209,8 @@ public class MainActivity extends AppCompatActivity {
                 values.put(NoteDatabaseHelper.KEY_NOTE, enteredNote.getText().toString());
                 values.put(NoteDatabaseHelper.KEY_DETAILS, currentTime.toString());
                 Log.i(ACTIVITY_NAME, "Inserting: " + enteredNote.getText().toString() + currentTime.toString());
-                db.insert(NoteDatabaseHelper.TABLE_NAME, null, values);
+                long inserted = db.insert(NoteDatabaseHelper.TABLE_NAME, null, values);
+                Log.i(ACTIVITY_NAME, "ID: " + inserted);
 
             }
         });
@@ -263,6 +280,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onDestroy() {
         super.onDestroy();
         bgm.stop();
+        db.close();
+        cursor.close();
         Log.i(ACTIVITY_NAME, "In onDestroy()");
 
     }
@@ -295,5 +314,13 @@ public class MainActivity extends AppCompatActivity {
             return contentView;
         }
 
+    }
+    public class EditNoteListener implements View.OnClickListener {
+
+        @Override
+        public void onClick(View v) {
+            Log.i(ACTIVITY_NAME, "Edit note clicked");
+            // Code to undo the user's last action
+        }
     }
 }

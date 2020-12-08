@@ -15,10 +15,10 @@ public class NoteDatabaseHelper extends SQLiteOpenHelper {
     public static final String TABLE_NAME = "TableOfNotes";
 
     private static final String DATABASE_CREATE = "create table "
-            + TABLE_NAME + "(" + KEY_ID
+            + TABLE_NAME + " (" + KEY_ID
             + " integer primary key autoincrement, " + KEY_NOTE
             + " text not null, " + KEY_DETAILS
-            + " text not null );";
+            + " TEXT );";
 
     @Override
     public void onCreate(SQLiteDatabase db) {
