@@ -51,6 +51,7 @@ public class MainActivity extends AppCompatActivity {
     AlertDialog.Builder enterNote;
     EditText enteredNote;
     String noteS, noteD;
+    TextView noteCondensed;
 
 
     @Override
@@ -109,14 +110,16 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
                 noteS = noteAdapter.getItem(position);
-                cursor =  db.rawQuery("select * from " + NoteDatabaseHelper.TABLE_NAME + " where " + NoteDatabaseHelper.KEY_NOTE + "='" + noteS + "'" , null);
+                cursor =  db.rawQuery("select * from " + NoteDatabaseHelper.TABLE_NAME + " where " + NoteDatabaseHelper.KEY_NOTE + "=\"" + noteS + "\"" , null);
                 cursor.moveToFirst();
                 if (cursor != null && cursor.getCount() > 0){
                     noteD = cursor.getString(cursor.getColumnIndex(NoteDatabaseHelper.KEY_DETAILS));
                 }
-                Snackbar details = Snackbar.make(findViewById(R.id.notesDrawer), "Note: " + noteS + " Details: " + noteD, Snackbar.LENGTH_LONG);
+                Snackbar details = Snackbar.make(findViewById(R.id.notesDrawer), "Note: " + noteS + "\nDetails: " + noteD, Snackbar.LENGTH_LONG);
                 details.setAction("Edit Note", new EditNoteListener());
                 details.setActionTextColor(Color.CYAN);
+                TextView snackbarTextView = (TextView) details.getView().findViewById(com.google.android.material.R.id.snackbar_text);
+                snackbarTextView.setMaxLines(5);
                 details.show();
             }
         });
@@ -305,7 +308,6 @@ public class MainActivity extends AppCompatActivity {
             message.setText(getItem(position)); // get the string at position
 
             if (createButton != null) {
-
                 createButton.setVisibility(View.INVISIBLE);
             }
             createButton = contentView.findViewById(R.id.newNoteButton);
