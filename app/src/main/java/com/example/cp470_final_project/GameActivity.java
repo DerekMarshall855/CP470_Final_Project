@@ -11,6 +11,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
@@ -30,6 +31,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
@@ -101,6 +103,18 @@ public class GameActivity extends AppCompatActivity {
             }
         });
 
+        //Skin
+        SharedPreferences sharedPrefs = getSharedPreferences("Skin", 0);
+        String skinSelected = sharedPrefs.getString("Skin", "pirate");
+        Log.i(ACTIVITY_NAME, "User skin: " + skinSelected);
+        ImageView pirate = findViewById(R.id.imagePirate);
+        if (skinSelected.equals("pirate")) {
+            pirate.setImageResource(R.drawable.pirate);
+        } else if (skinSelected.equals("pirate2")){
+            pirate.setImageResource(R.drawable.pirate2);
+        } else if (skinSelected.equals("pirate3")){
+            pirate.setImageResource(R.drawable.pirate3);
+        }
 
         //TOOLBAR
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -143,7 +157,13 @@ public class GameActivity extends AppCompatActivity {
                 // Specify arguments in placeholder order.
                 String[] selectionArgs = {String.valueOf(position+1)};
                 int deletedRows = db.delete(NoteDatabaseHelper.TABLE_NAME, selection, selectionArgs);
-                Log.i(ACTIVITY_NAME, "Number deleted:" + deletedRows);
+                Log.i(ACTIVITY_NAME, "Number deleted based on id:" + deletedRows + " From: " + (position+1));
+                if (deletedRows == 0){
+                    selection = NoteDatabaseHelper.KEY_NOTE + " LIKE ?";
+                    String[] selectionArg = {noteAdapter.getItem(position)};
+                    deletedRows = db.delete(NoteDatabaseHelper.TABLE_NAME, selection, selectionArg);
+                    Log.i(ACTIVITY_NAME, "Number deleted based on content:" + deletedRows);
+                }
 
                 notesLog.remove(position);
                 noteAdapter.notifyDataSetChanged();
@@ -165,19 +185,6 @@ public class GameActivity extends AppCompatActivity {
         }
         for (int i = 0; i < cursor.getColumnCount(); i++){
             Log.i(ACTIVITY_NAME,"column name "+cursor.getColumnName(i));
-        }
-
-        if (notesLog.size() == 0 ){
-            String dfault = getString(R.string.noteBlurb);
-            notesLog.add(dfault);
-            noteAdapter.notifyDataSetChanged();
-            Date currentTime = Calendar.getInstance().getTime();
-
-            ContentValues values = new ContentValues();
-            values.put(NoteDatabaseHelper.KEY_NOTE, dfault);
-            values.put(NoteDatabaseHelper.KEY_DETAILS, currentTime.toString());
-            Log.i(ACTIVITY_NAME, "Inserting: " + dfault + currentTime.toString());
-            db.insert(NoteDatabaseHelper.TABLE_NAME, null, values);
         }
 
     }
@@ -265,7 +272,21 @@ public class GameActivity extends AppCompatActivity {
         db.close();
         cursor.close();
         Log.i(ACTIVITY_NAME, "In onDestroy()");
-
+    }
+    protected void onStart() {
+        super.onStart();
+        Log.i(ACTIVITY_NAME, "In onStart()");
+        SharedPreferences sharedPrefs = getSharedPreferences("Skin", 0);
+        String skinSelected = sharedPrefs.getString("Skin", "pirate");
+        Log.i(ACTIVITY_NAME, "User skin: " + skinSelected);
+        ImageView pirate = findViewById(R.id.imagePirate);
+        if (skinSelected.equals("pirate")) {
+            pirate.setImageResource(R.drawable.pirate);
+        } else if (skinSelected.equals("pirate2")){
+            pirate.setImageResource(R.drawable.pirate2);
+        } else if (skinSelected.equals("pirate3")){
+            pirate.setImageResource(R.drawable.pirate3);
+        }
     }
 
     private class NoteAdapter extends ArrayAdapter<String> {

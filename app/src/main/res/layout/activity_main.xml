@@ -18,7 +18,7 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="25dp"
-            android:background="?attr/colorPrimary"
+            android:background="#E686D7DD"
             app:popupTheme="@style/AppTheme.PopupOverlay" />
 
         <TextView
@@ -43,6 +43,7 @@
                 android:layout_width="70dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="50dp"
+                android:background="#E686D7DD"
                 app:srcCompat="@drawable/ic_baseline_help_outline_24" />
 
             <Button
@@ -51,6 +52,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal|center"
                 android:layout_margin="50dp"
+                android:background="#E686D7DD"
                 android:text="@string/play" />
 
             <ImageButton
@@ -58,6 +60,7 @@
                 android:layout_width="50dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="50dp"
+                android:background="#E686D7DD"
                 app:srcCompat="@drawable/ic_baseline_settings_24" />
 
         </LinearLayout>

@@ -18,7 +18,7 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="25dp"
-            android:background="?attr/colorPrimary"
+            android:background="#E686D7DD"
             android:layout_alignParentTop="true"
             app:popupTheme="@style/AppTheme.PopupOverlay" />
 
@@ -30,29 +30,34 @@
             android:layout_toEndOf="@+id/image_button"
             android:layout_below = "@id/toolbar"/>
 
-        <ImageButton
+        <ImageView
             android:id="@+id/image_button"
             android:layout_width="346dp"
             android:layout_height="match_parent"
+            android:background = "#E688EBE1"
             android:contentDescription="@string/descMap"
-            app:srcCompat="@drawable/treasure_map"
+            app:srcCompat="@drawable/pirate_map_bg"
+            android:scaleType="fitXY"
             android:layout_below = "@id/toolbar"/>
 
         <ImageView
-            android:id="@+id/image_button_pirate"
+            android:id="@+id/imagePirate"
             android:layout_width="158dp"
             android:layout_height="137dp"
-            android:layout_marginTop="180dp"
-            android:layout_marginStart="100dp"
+            android:layout_toLeftOf = "@id/game"
+            android:layout_alignParentLeft = "true"
+            android:layout_gravity = "center_horizontal"
+            android:layout_centerVertical="true"
             android:contentDescription="@string/descPirate"
             app:srcCompat="@drawable/pirate" />
 
         <ImageButton
             android:id="@+id/gamePrevious"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="65dp"
+            android:layout_height="30dp"
             android:layout_alignBottom="@id/image_button"
             android:contentDescription="@string/descBack"
+            android:background="#E686D7DD"
             app:srcCompat="@drawable/ic_baseline_arrow_back_24" />
 
 

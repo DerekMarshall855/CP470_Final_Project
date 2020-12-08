@@ -11,7 +11,8 @@
     <TextView
         android:id="@+id/textView2"
         android:layout_width="match_parent"
-        android:layout_height="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
         android:gravity="center"
         android:textSize="30dp"
         android:text="SETTINGS" />
@@ -20,6 +21,7 @@
         android:id="@+id/music"
         android:layout_width="250dp"
         android:layout_height="50dp"
+        android:layout_marginTop="15dp"
         android:gravity="center"
         android:text="Music"
         android:layout_below="@+id/textView2"/>
@@ -29,6 +31,7 @@
         android:layout_width="150dp"
         android:layout_height="50dp"
         android:layout_toRightOf="@+id/music"
+        android:thumbTint = "#86D7DD"
         android:progress="100"
         android:layout_below="@id/textView2"/>
 
@@ -46,6 +49,7 @@
         android:layout_height="50dp"
         android:layout_below="@+id/seekBar2"
         android:layout_toRightOf="@+id/sfx"
+        android:buttonTint = "#86D7DD"
         android:checked="true" />
 
     <TextView
@@ -57,10 +61,49 @@
         android:text="Skins" />
 
     <ImageButton
-        android:id="@+id/previous"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/pirate1"
+        android:layout_width="65dp"
+        android:layout_height="90dp"
         android:layout_below="@+id/skins"
+        android:layout_toStartOf = "@id/pirate2"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="15dp"
+        android:background="#3386D7DD"
+        android:scaleType="centerInside"
+        app:srcCompat="@drawable/pirate" />
+
+    <ImageButton
+        android:id="@+id/pirate2"
+        android:layout_width="65dp"
+        android:layout_height="90dp"
+        android:layout_below="@+id/skins"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="15dp"
+        android:background="#3386D7DD"
+        android:scaleType="centerInside"
+        app:srcCompat="@drawable/pirate2" />
+
+    <ImageButton
+        android:id="@+id/pirate3"
+        android:layout_width="65dp"
+        android:layout_height="90dp"
+        android:layout_below="@+id/skins"
+        android:layout_toEndOf="@+id/pirate2"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="15dp"
+        android:background="#3386D7DD"
+        android:scaleType="centerInside"
+        app:srcCompat="@drawable/pirate3" />
+
+    <ImageButton
+        android:id="@+id/previous"
+        android:layout_width="65dp"
+        android:layout_height="30dp"
+        android:layout_below="@+id/pirate1"
+        android:background="#E686D7DD"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="15dp"
         app:srcCompat="@drawable/ic_baseline_arrow_back_24" />
 
 
