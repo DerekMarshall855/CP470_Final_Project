@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="exit">Sortir</string>
+    <string name="selectLevel">Choisir le niveau</string>
+    <string name="settings">Configurations</string>
+    <string name="play">Jouer</string>
+    <string name="title_activity_settings">Activité des Paramètres</string>
+    <string name="app_name">CODE DU CAPITAINE</string>
+    <string name="help_dialog_title">Informations sur le code du capitaine</string>
+    <string name="ok">d\'accord</string>
+    <string name="cancel">Annuler</string>
+    <string name="Help">Aide</string>
+    <string name="level">Niveau</string>
+    <string name="hint">Donne-moi un indice</string>
+    <string name="submit">Vérifier</string>
+    <string name="hello_blank_fragment">texte vierge</string>
+    <string name="controls">les contrôles</string>
+    <string name="level_select">Sélection de Niveau</string>
+    <string name="level_1">Niveau Un</string>
+    <string name="level_2">Niveau Deux</string>
+    <string name="level_3">Niveau Trois</string>
+    <string name="correct">Correct, bon travail!</string>
+    <string name="wrong">Ce n\'est pas tout à fait vrai, réessayez.</string>
+    <string name="dialogTitle">Vous battez le niveau!</string>
+    <string name="nextLevel">Niveau suivant</string>
+    <string name="returnMain">Revenir au menu</string>
+    <string name = "instructions">Remplissez le vide ou sélectionnez l\'une des options et appuyez sur cochez!\n Si vous êtes bloqué, utilisez l\'un des conseils!</string>
+    <string name="howTo">Comment jouer</string>
+    <string name="descMap">Carte pirate</string>
+    <string name="descBack">Bouton retourn</string>
+    <string name="descPirate">Pirate Pete</string>
+    <string name="notes">Notes</string>
+    <string name="about">Info</string>
+    <string name="appInfo">Version 1.0</string>
+    <string name="save">Enregistrer</string>
+    <string name="newNote">Nouvelle Note</string>
+    <string name="noteBlurb">Vous pouvez écrire vos propres notes</string>
+    <string name="delete">Effacer ce note?</string>
+    <string name="checked_on">SFX on</string>
+    <string name="checked_off">SFX off</string>
+</resources>
