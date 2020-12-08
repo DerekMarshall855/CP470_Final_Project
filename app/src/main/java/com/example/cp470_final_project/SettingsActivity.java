@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.provider.Settings;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.ImageButton;
@@ -17,6 +18,7 @@ import android.widget.SeekBar;
 public class SettingsActivity extends AppCompatActivity {
     private final static String ACTIVITY_NAME = "SettingsActivity";
     private SeekBar volumeBar = null;
+    ImageButton skin1, skin2, skin3;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -66,6 +68,11 @@ public class SettingsActivity extends AppCompatActivity {
 
             }
         });
+
+        skin1 = findViewById(R.id.pirate1);
+        skin2 = findViewById(R.id.pirate2);
+        skin3 = findViewById(R.id.pirate3);
+
 
     }
 
