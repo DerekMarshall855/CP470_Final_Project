@@ -23,7 +23,7 @@
     <string name="dialogTitle">You beat the level!</string>
     <string name="nextLevel">Next Level</string>
     <string name="returnMain">Return to Menu</string>
-    <string name="instructions">Fill in the blank or select one of the options and press check!\n If you get stuck use one of the hints!</string>
+    <string name="instructions">Fill in the blank or select one of the options and press check!\nIf you get stuck use one of the hints!</string>
     <string name="howTo">How to play</string>
     <string name="descMap">Pirate Map</string>
     <string name="descBack">Back button</string>
@@ -35,6 +35,7 @@
     <string name="newNote">New Note</string>
     <string name="noteBlurb">You can enter your own notes here on concepts or syntax you\'re struggling with. Tap a note for more information. Hold a note to remove it.</string>
     <string name="delete">Delete this note?</string>
+    <string name="skinChange">Skin change successful</string>
     <string name="checked_on">SFX on</string>
     <string name="checked_off">SFX off</string>
 </resources>

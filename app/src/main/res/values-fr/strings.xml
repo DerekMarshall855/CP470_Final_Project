@@ -24,18 +24,19 @@
     <string name="dialogTitle">Vous battez le niveau!</string>
     <string name="nextLevel">Niveau suivant</string>
     <string name="returnMain">Revenir au menu</string>
-    <string name = "instructions">Remplissez le vide ou sélectionnez l\'une des options et appuyez sur cochez!\n Si vous êtes bloqué, utilisez l\'un des conseils!</string>
+    <string name = "instructions">Remplissez le vide ou sélectionnez l\'une des options et appuyez sur cochez!\nSi vous êtes bloqué, utilisez l\'un des conseils!</string>
     <string name="howTo">Comment jouer</string>
     <string name="descMap">Carte pirate</string>
     <string name="descBack">Bouton retourn</string>
     <string name="descPirate">Pirate Pete</string>
     <string name="notes">Notes</string>
     <string name="about">Info</string>
-    <string name="appInfo">Version 1.0</string>
+    <string name="appInfo">Version 1.0 par Taite LaGrange, Arhan Ikram, Derek Marshall, Rebecca Knezy, et Joanne Bui.</string>
     <string name="save">Enregistrer</string>
     <string name="newNote">Nouvelle Note</string>
     <string name="noteBlurb">Vous pouvez écrire vos propres notes</string>
     <string name="delete">Effacer ce note?</string>
     <string name="checked_on">SFX on</string>
     <string name="checked_off">SFX off</string>
+    <string name="skinChange">Changement de peau réussi</string>
 </resources>
