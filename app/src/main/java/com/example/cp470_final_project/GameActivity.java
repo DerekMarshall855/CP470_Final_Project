@@ -86,7 +86,6 @@ public class GameActivity extends AppCompatActivity {
             FragmentTransaction ft = fragmentManager.beginTransaction();
             controls.setArguments(bundle);
             ft.replace(R.id.game, controls, null);
-            ft.addToBackStack("name");
             ft.commit();
             menu = true;
         } else {

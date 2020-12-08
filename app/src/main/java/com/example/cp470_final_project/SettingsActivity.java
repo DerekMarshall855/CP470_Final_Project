@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.PorterDuff;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.os.Bundle;
@@ -16,6 +17,7 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.ImageButton;
 import android.widget.SeekBar;
+import android.widget.Toast;
 
 public class SettingsActivity extends AppCompatActivity {
     private final static String ACTIVITY_NAME = "SettingsActivity";
@@ -80,6 +82,10 @@ public class SettingsActivity extends AppCompatActivity {
         skin2 = findViewById(R.id.pirate2);
         skin3 = findViewById(R.id.pirate3);
 
+        final Toast toast = Toast.makeText(this, R.string.skinChange, Toast.LENGTH_SHORT);
+        View toastView = toast.getView();
+        toastView.getBackground().setColorFilter(getResources().getColor(R.color.ic_launcher_background), PorterDuff.Mode.SRC_IN);
+
         skin1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -87,6 +93,7 @@ public class SettingsActivity extends AppCompatActivity {
                 Log.i(ACTIVITY_NAME, "User skin: " + skinSelected);
                 editor.putString("Skin", skinSelected);
                 editor.commit();
+                toast.show();
             }
         });
         skin2.setOnClickListener(new View.OnClickListener() {
@@ -96,6 +103,7 @@ public class SettingsActivity extends AppCompatActivity {
                 Log.i(ACTIVITY_NAME, "User skin: " + skinSelected);
                 editor.putString("Skin", skinSelected);
                 editor.commit();
+                toast.show();
             }
         });
         skin3.setOnClickListener(new View.OnClickListener() {
@@ -105,6 +113,7 @@ public class SettingsActivity extends AppCompatActivity {
                 Log.i(ACTIVITY_NAME, "User skin: " + skinSelected);
                 editor.putString("Skin", skinSelected);
                 editor.commit();
+                toast.show();
             }
         });
 

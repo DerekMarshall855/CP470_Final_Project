@@ -36,4 +36,5 @@
     <string name="newNote">Nouvelle Note</string>
     <string name="noteBlurb">Vous pouvez écrire vos propres notes</string>
     <string name="delete">Effacer ce note?</string>
+    <string name="skinChange">Changement de peau réussi</string>
 </resources>

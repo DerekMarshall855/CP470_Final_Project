@@ -100,7 +100,7 @@
         android:id="@+id/previous"
         android:layout_width="65dp"
         android:layout_height="30dp"
-        android:layout_below="@+id/pirate1"
+        android:layout_alignParentBottom="true"
         android:background="#E686D7DD"
         android:layout_marginStart="15dp"
         android:layout_marginTop="15dp"
