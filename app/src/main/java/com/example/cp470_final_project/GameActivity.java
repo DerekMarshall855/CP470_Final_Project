@@ -223,7 +223,7 @@ public class GameActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item){
         switch(item.getItemId()){
             case R.id.aboutTool:
-                Log.d("Toolbar", "Help selected");
+                Log.d("Toolbar", "About selected");
                 AlertDialog.Builder builder = new AlertDialog.Builder(this);
                 builder.setTitle(R.string.about);
                 builder.setMessage(R.string.appInfo);

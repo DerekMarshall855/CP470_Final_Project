@@ -231,7 +231,7 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item){
         switch(item.getItemId()){
             case R.id.help_action:
-                Log.d("Toolbar", "Help selected");
+                Log.d("Toolbar", "About selected");
                 AlertDialog.Builder builder = new AlertDialog.Builder(this);
                 builder.setTitle(R.string.about);
                 builder.setMessage(R.string.appInfo);
@@ -249,7 +249,7 @@ public class MainActivity extends AppCompatActivity {
                 // Create the AlertDialog
                 AlertDialog dialog = builder.create();
                 dialog.show();
-                //break;
+                break;
             case R.id.notesTool:
                 Log.d("Toolbar", "Notes selected");
                 drawerLayout = findViewById(R.id.notesDrawer);

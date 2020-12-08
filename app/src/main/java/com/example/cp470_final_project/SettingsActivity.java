@@ -13,6 +13,7 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.ImageButton;
 import android.widget.SeekBar;
+import android.widget.Toast;
 
 public class SettingsActivity extends AppCompatActivity {
     private final static String ACTIVITY_NAME = "SettingsActivity";
@@ -32,17 +33,10 @@ public class SettingsActivity extends AppCompatActivity {
         });
         volumeBar = (SeekBar)findViewById(R.id.seekBar2);
 
-
-
         sfx.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked == true){
-                    //sfx is on
-                }
-                else{
-                    //sfx is off
-                }
+                checkedBox(isChecked);
             }
         });
 
@@ -63,10 +57,27 @@ public class SettingsActivity extends AppCompatActivity {
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
 
-
             }
         });
 
+    }
+
+    public void checkedBox(boolean checked){
+        int text;
+        int duration;
+        Toast toast;
+
+        if (checked){
+            text = R.string.checked_on;
+            duration = Toast.LENGTH_SHORT;
+        }
+        else{
+            text = R.string.checked_off;
+            duration = Toast.LENGTH_SHORT;
+        }
+
+        toast = Toast.makeText(this,text,duration);
+        toast.show();
     }
 
 
