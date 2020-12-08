@@ -23,7 +23,7 @@
     <string name="dialogTitle">You beat the level!</string>
     <string name="nextLevel">Next Level</string>
     <string name="returnMain">Return to Menu</string>
-    <string name="instructions">Fill in the blank or select one of the options and press check!\n If you get stuck use one of the hints!</string>
+    <string name="instructions">Fill in the blank or select one of the options and press check!\nIf you get stuck use one of the hints!</string>
     <string name="howTo">How to play</string>
     <string name="descMap">Pirate Map</string>
     <string name="descBack">Back button</string>

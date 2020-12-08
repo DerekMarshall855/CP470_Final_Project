@@ -29,6 +29,7 @@
         android:layout_width="150dp"
         android:layout_height="50dp"
         android:layout_toRightOf="@+id/music"
+        android:thumbTint = "#86D7DD"
         android:progress="100"
         android:layout_below="@id/textView2"/>
 
@@ -46,6 +47,7 @@
         android:layout_height="50dp"
         android:layout_below="@+id/seekBar2"
         android:layout_toRightOf="@+id/sfx"
+        android:buttonTint = "#86D7DD"
         android:checked="true" />
 
     <TextView
@@ -58,9 +60,12 @@
 
     <ImageButton
         android:id="@+id/previous"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="65dp"
+        android:layout_height="30dp"
         android:layout_below="@+id/skins"
+        android:background="#E686D7DD"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="15dp"
         app:srcCompat="@drawable/ic_baseline_arrow_back_24" />
 
 
