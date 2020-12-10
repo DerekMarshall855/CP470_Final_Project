@@ -24,6 +24,7 @@ public class SettingsActivity extends AppCompatActivity {
     private SeekBar volumeBar = null;
     ImageButton skin1, skin2, skin3;
     String skinSelected;
+    SharedPreferences sharedPreferences;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,6 +40,13 @@ public class SettingsActivity extends AppCompatActivity {
         });
         volumeBar = (SeekBar)findViewById(R.id.seekBar2);
 
+        sharedPreferences = getSharedPreferences("volumeSaved", Context.MODE_PRIVATE);
+        sharedPreferences.getInt("volumeSaved", 100);
+        volumeBar.setProgress(sharedPreferences.getInt("volumeSaved", 100));
+        final SharedPreferences.Editor e = sharedPreferences.edit();
+
+
+
         sfx.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -52,6 +60,10 @@ public class SettingsActivity extends AppCompatActivity {
                 float volume = (float)(1 - (Math.log(100 - (progress)) / Math.log(100)));
                 MainActivity.bgm.setVolume(volume, volume);
                 MainActivity.bgm.start();
+
+                e.putInt("volumeSaved", volumeBar.getProgress());
+                e.commit();
+
 
             }
 
