@@ -2,7 +2,6 @@ package com.example.cp470_final_project;
 
 import android.app.Activity;
 import android.app.Instrumentation;
-import android.widget.Button;
 
 import androidx.test.rule.ActivityTestRule;
 

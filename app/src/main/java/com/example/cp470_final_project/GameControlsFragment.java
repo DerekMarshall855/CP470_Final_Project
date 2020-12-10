@@ -173,9 +173,15 @@ public class GameControlsFragment extends Fragment {
         customBuild.setPositiveButton(R.string.nextLevel, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
                 // User clicked OK button
-                Intent intent = new Intent(getContext(), GameActivity.class);
-                intent.putExtra("Level", level+1);
-                startActivity(intent);
+                if (level != 3){
+                    Intent intent = new Intent(getContext(), GameActivity.class);
+                    intent.putExtra("Level", level+1);
+                    startActivity(intent);
+                } else {
+                    Intent intent = new Intent(getContext(), LevelSelect.class);
+                    startActivity(intent);
+                }
+
             }
         });
         customBuild.setNegativeButton(R.string.returnMain, new DialogInterface.OnClickListener() {
