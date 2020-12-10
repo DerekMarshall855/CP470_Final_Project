@@ -98,7 +98,8 @@ public class GameActivity extends AppCompatActivity {
         previous.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                finish();
+                Intent intent = new Intent(GameActivity.this, LevelSelect.class);
+                startActivity(intent);
             }
         });
 
